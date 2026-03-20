@@ -7,7 +7,112 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>*{margin:0;padding:0;box-sizing:border-box;}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+img{max-width:100%;}
+
+/* ============================
+   RESPONSIVE — TABLET & MOBILE
+   Tested breakpoints:
+   - 1024px  iPad Pro 12.9"
+   - 860px   iPad Air / standard tablet
+   - 768px   iPad mini
+   - 600px   Large phone landscape
+   - 430px   iPhone Pro Max
+   - 375px   iPhone SE / standard
+   ============================ */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  /* Slightly reduce hero photo area */
+  .hero-photos-wrap { width: 45% !important; }
+  .hero-text-wrap { width: min(65%, 100%) !important; }
+}
+
+/* ── Tablet (≤860px) ── */
+@media (max-width: 860px) {
+  /* Hero: hide photos, text full width */
+  .hero-photos-wrap { display: none !important; }
+  .hero-text-wrap {
+    width: 100% !important;
+    padding: 0 clamp(16px, 4vw, 40px) !important;
+  }
+
+  /* Stats: stack photo above counters */
+  .stats-flex {
+    flex-direction: column !important;
+  }
+  .stats-flex > div:first-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 220px !important;
+  }
+
+  /* Vasyl card: stack vertically */
+  .vasyl-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .vasyl-divider { display: none !important; }
+  .vasyl-badges { flex-direction: row !important; flex-wrap: wrap !important; }
+
+  /* About intro: stack text + button */
+  .about-intro {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Feedback: arrows go below on small screens */
+  .feedback-outer {
+    flex-wrap: wrap !important;
+  }
+  .feedback-outer > .feedback-cards {
+    order: 1;
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  .feedback-outer > button {
+    order: 2;
+    margin-top: 12px;
+  }
+}
+
+/* ── Mobile (≤600px) ── */
+@media (max-width: 600px) {
+  /* All 2-col grids collapse to 1 col */
+  .grid-auto { grid-template-columns: 1fr !important; }
+
+  /* Hero section less top padding */
+  .hero-section { padding-top: 100px !important; padding-bottom: 80px !important; }
+
+  /* Nav: tighten logo */
+  .nav-logo img { height: 28px !important; }
+
+  /* Vasyl image smaller */
+  .vasyl-img { width: 120px !important; height: 120px !important; }
+
+  /* Event cards: single column */
+  .events-grid { grid-template-columns: 1fr !important; }
+
+  /* Mentor grid: 1 col */
+  .mentor-grid { grid-template-columns: 1fr !important; }
+
+  /* Feedback cards: 1 col */
+  .feedback-cards { grid-template-columns: 1fr !important; }
+
+  /* Ambassador cards: 1 col */
+  .ambassador-grid { grid-template-columns: 1fr !important; }
+
+  /* Reduce section vertical padding */
+  section { padding-top: max(24px, 4vw) !important; padding-bottom: max(24px, 4vw) !important; }
+}
+
+/* ── Small mobile (≤375px) ── */
+@media (max-width: 375px) {
+  .hero-section h1 { font-size: clamp(20px, 8vw, 28px) !important; }
+}
+
+</style>
 </head>
 <body>
 <div id="root"></div>
@@ -442,7 +547,7 @@ function FeedbackCarousel() {
   const maxPage = Math.ceil(feedbacks.length / 2) - 1;
   const visible = feedbacks.slice(page * 2, page * 2 + 2);
   return (
-    React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 16 }}
+    React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}
       /* Left arrow */
       , React.createElement('button', { onClick: () => setPage(p => Math.max(0, p - 1)),
         style: {
@@ -455,7 +560,7 @@ function FeedbackCarousel() {
           transition: "all 0.3s", opacity: page === 0 ? 0.35 : 1,
         }}, "\u2190")
 
-      , React.createElement('div', { style: { flex: 1, display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}
+      , React.createElement('div', { style: { flex: 1, minWidth: 0, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}
         , visible.map((fb, i) => (
           React.createElement('div', { key: page * 2 + i, style: { animation: "fadeIn 0.4s ease" }}
             , React.createElement(Card, { style: { padding: "36px 32px", height: "100%" }}
@@ -665,7 +770,7 @@ function HomePage({ setPage }) {
         }} )
 
         /* Text — 60% wide so it overlaps photos */
-        , React.createElement('div', { style: { width: "60%", padding: "0 clamp(20px, 5vw, 80px)", position: "relative", zIndex: 1 }}
+        , React.createElement('div', { style: { width: "min(60%, 100%)", maxWidth: "100%", padding: "0 clamp(20px, 5vw, 80px)", position: "relative", zIndex: 1 }}
           , React.createElement('div', {__self: this}
             , React.createElement('h1', { className: "anim-up anim-up-d1" , style: {
               fontFamily: "'Playfair Display', serif",
@@ -701,16 +806,16 @@ function HomePage({ setPage }) {
 
       /* STATS + PHOTO — combined */
       , React.createElement('section', { style: { padding: "80px clamp(20px, 5vw, 80px) 40px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", display: "flex", gap: "clamp(16px, 2.5vw, 32px)", alignItems: "stretch" }}
+        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", display: "flex", gap: "clamp(16px, 2.5vw, 32px)", alignItems: "stretch", flexWrap: "wrap" }}
           /* Photo left */
-          , React.createElement('div', { style: { flex: "0 0 auto", width: "clamp(240px, 32%, 420px)", borderRadius: 20, overflow: "hidden", boxShadow: "0 16px 60px rgba(0,0,0,0.4)", border: `1px solid rgba(255,255,255,0.07)` }}
+          , React.createElement('div', { style: { flex: "0 0 auto", width: "clamp(240px, 32%, 420px)", minWidth: "min(100%, 300px)", borderRadius: 20, overflow: "hidden", boxShadow: "0 16px 60px rgba(0,0,0,0.4)", border: `1px solid rgba(255,255,255,0.07)` }}
             , React.createElement('img', { src: PHOTO_COMMUNITY, alt: "Raisable community" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 300 }} )
           )
           /* Stats right */
           , React.createElement('div', { style: {
             flex: 1,
-            display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24,
-            padding: "clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px)", borderRadius: 20,
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24,
+            padding: "clamp(20px, 4vw, 56px) clamp(16px, 3vw, 40px)", borderRadius: 20,
             background: `linear-gradient(135deg, ${COLORS.bgCard}, ${COLORS.bg})`,
             border: `1px solid ${COLORS.border}`,
             alignContent: "center",
@@ -734,7 +839,7 @@ function HomePage({ setPage }) {
             }}, "What Entrepreneurs Receive with US"    )
           )
           , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(2, 1fr)",
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: 20, alignItems: "stretch",
           }}
             , [
@@ -761,7 +866,7 @@ function HomePage({ setPage }) {
       , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 80px" }}
         , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
           , React.createElement(SectionHead, { title: "We provide"  } )
-          , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20, alignItems: "stretch" }}
+          , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, alignItems: "stretch" }}
             , [
               { color: COLORS.accent, title: "Expert Sessions",
                 desc: "Structured online meetups with Silicon Valley founders, VCs, and operators." },
@@ -790,10 +895,6 @@ function HomePage({ setPage }) {
       /* BOOTCAMPS CAROUSEL */
       , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 0px" }}
         , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement('h3', { className: "anim-up", style: {
-            fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 600,
-            color: COLORS.grayLight, marginBottom: 24, textTransform: "lowercase", fontStyle: "italic",
-          }}, "our bootcamps" )
           , React.createElement(BootcampCarousel, {__self: this} )
         )
       )
@@ -831,7 +932,6 @@ function HomePage({ setPage }) {
                 fontFamily: "'Playfair Display', serif",
                 fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
                 lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
-                whiteSpace: "nowrap",
               }}, "Some of the VC Funds in our circle"       )
             , React.createElement(VCNetworkGrid, {__self: this} )
           )
@@ -928,7 +1028,7 @@ function AboutPage() {
               , React.createElement('h2', { style: {
                 fontFamily: "'Playfair Display', serif",
                 fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 700,
-                lineHeight: 1.15, whiteSpace: "nowrap",
+                lineHeight: 1.15,
               }}, "We don't teach Silicon Valley. We bring you inside."        )
               , React.createElement('p', { style: {
                 fontSize: 18, color: COLORS.gray, marginTop: 16, lineHeight: 1.7, maxWidth: 900,
@@ -1064,7 +1164,7 @@ function AboutPage() {
           , React.createElement(SectionHead, { title: "Our Ambassadors" ,
             sub: "Meet the people representing Raisable around the world."       } )
           , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 18, marginBottom: 60,
           }}
             , [
@@ -1109,7 +1209,6 @@ function AboutPage() {
                 fontFamily: "'Playfair Display', serif",
                 fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
                 lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
-                whiteSpace: "nowrap",
               }}, "Some of the VC Funds in our circle"       )
             , React.createElement(VCNetworkGrid, {__self: this} )
           )
@@ -1121,10 +1220,10 @@ function AboutPage() {
             , React.createElement('h2', { style: {
               fontFamily: "'Playfair Display', serif",
               fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 700,
-              lineHeight: 1.15, whiteSpace: "nowrap", marginBottom: 12,
+              lineHeight: 1.15, marginBottom: 12,
             }}, "Some of Our Esteemed Mentors and Advisors"      )
             , React.createElement('p', { style: {
-              fontSize: 15, color: COLORS.gray, lineHeight: 1.7, whiteSpace: "nowrap",
+              fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
             }}, "Our network includes serial entrepreneurs, unicorn co-founders, FAANG operators, and active VCs."           )
           )
           , React.createElement('div', { style: {
