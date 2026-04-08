@@ -112,7 +112,76 @@ img{max-width:100%;}
   .hero-section h1 { font-size: clamp(20px, 8vw, 28px) !important; }
 }
 
+
+/* ── MailerLite dark theme override ── */
+.ml-embedded { width: 100%; }
+.ml-embedded .ml-form-embedWrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+.ml-embedded .ml-form-embedBody { padding: 0 !important; }
+.ml-embedded .ml-form-embedContent { display: none !important; }
+.ml-embedded .ml-form-fieldRow { padding: 0 !important; margin-bottom: 12px !important; }
+.ml-embedded .ml-form-fieldRow input[type="email"],
+.ml-embedded .ml-form-fieldRow input[type="text"] {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(79,140,255,0.2) !important;
+  border-radius: 10px !important;
+  color: #f0f2f5 !important;
+  font-family: 'DM Sans', Inter, sans-serif !important;
+  font-size: 15px !important;
+  padding: 14px 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: border 0.2s !important;
+}
+.ml-embedded .ml-form-fieldRow input::placeholder { color: #8b95a5 !important; }
+.ml-embedded .ml-form-fieldRow input:focus {
+  border-color: rgba(79,140,255,0.5) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(79,140,255,0.1) !important;
+}
+.ml-embedded .ml-form-checkboxRow { display: none !important; }
+.ml-embedded button[type="submit"],
+.ml-embedded .ml-form-embedSubmit button {
+  background: linear-gradient(135deg, #4f8cff 0%, #2d6fe8 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+  font-family: 'DM Sans', Inter, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 14px 36px !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+  transition: opacity 0.2s, transform 0.15s !important;
+  letter-spacing: 0.02em !important;
+}
+.ml-embedded button[type="submit"]:hover,
+.ml-embedded .ml-form-embedSubmit button:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px) !important;
+}
+.ml-embedded .ml-form-successBody {
+  background: rgba(79,140,255,0.08) !important;
+  border: 1px solid rgba(79,140,255,0.2) !important;
+  border-radius: 10px !important;
+  color: #f0f2f5 !important;
+  padding: 20px !important;
+}
 </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2251367');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 <body>
 <div id="root"></div>
@@ -722,6 +791,89 @@ function BootcampCarousel() {
 }
 
 // ─── PAGE: HOME ───
+
+// ─── NEWSLETTER FORM ───
+function NewsletterForm() {
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName,  setLastName]  = React.useState("");
+  const [email,     setEmail]     = React.useState("");
+  const [linkedin,  setLinkedin]  = React.useState("");
+  const [status,    setStatus]    = React.useState("idle"); // idle | loading | success | error
+
+  const inputStyle = {
+    width: "100%", padding: "13px 15px", borderRadius: 10,
+    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.border}`,
+    color: COLORS.white, fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+    outline: "none", transition: "border 0.25s", boxSizing: "border-box",
+  };
+  const placeholderColor = COLORS.gray;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email.trim() || !firstName.trim()) return;
+    setStatus("loading");
+    const fd = new FormData();
+    fd.append("fields[email]",      email.trim());
+    fd.append("fields[name]",       (firstName.trim() + " " + lastName.trim()).trim());
+    fd.append("fields[last_name]",  lastName.trim());
+    fd.append("fields[w1_linkedin]", linkedin.trim());
+    fd.append("ml-submit", "1");
+    fd.append("anticsrf", "true");
+    fetch("https://assets.mailerlite.com/jsonp/2251367/forms/94Fs9e/subscribe", {
+      method: "POST", body: fd,
+    })
+    .then(r => r.ok ? r.json() : Promise.reject(r))
+    .then(() => setStatus("success"))
+    .catch(() => setStatus("error"));
+  };
+
+  if (status === "success") {
+    return React.createElement('div', { style: {
+      background: "rgba(79,140,255,0.08)", border: `1px solid rgba(79,140,255,0.25)`,
+      borderRadius: 12, padding: "28px 24px", textAlign: "center",
+    }}
+      , React.createElement('div', { style: { fontSize: 28, marginBottom: 10 }}, "✓")
+      , React.createElement('p', { style: { color: COLORS.white, fontWeight: 600, fontSize: 17, marginBottom: 6 }}, "You're in!")
+      , React.createElement('p', { style: { color: COLORS.gray, fontSize: 15 }}, "We'll keep you posted on events and opportunities.")
+    );
+  }
+
+  return React.createElement('form', { onSubmit: handleSubmit, style: { width: "100%", maxWidth: 520, margin: "0 auto" }}
+    /* Row 1: First name / Last name */
+    , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
+      , React.createElement('input', { type: "text", placeholder: "First name", required: true,
+          value: firstName, onChange: e => setFirstName(e.target.value),
+          style: inputStyle })
+      , React.createElement('input', { type: "text", placeholder: "Last name",
+          value: lastName, onChange: e => setLastName(e.target.value),
+          style: inputStyle })
+    )
+    /* Row 2: Email / LinkedIn */
+    , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
+      , React.createElement('input', { type: "email", placeholder: "Email address", required: true,
+          value: email, onChange: e => setEmail(e.target.value),
+          style: inputStyle })
+      , React.createElement('input', { type: "text", placeholder: "LinkedIn profile URL",
+          value: linkedin, onChange: e => setLinkedin(e.target.value),
+          style: inputStyle })
+    )
+    /* Row 3: Subscribe button */
+    , React.createElement('button', { type: "submit", disabled: status === "loading",
+        style: {
+          width: "100%", padding: "14px 36px", borderRadius: 10,
+          background: status === "loading" ? COLORS.accentSoft : "linear-gradient(135deg, #4f8cff 0%, #2d6fe8 100%)",
+          border: "none", color: "#fff",
+          fontSize: 15, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+          cursor: status === "loading" ? "not-allowed" : "pointer",
+          letterSpacing: "0.02em", transition: "opacity 0.2s, transform 0.15s",
+        }}
+      , status === "loading" ? "Subscribing…" : "Subscribe"
+    )
+    , status === "error" && React.createElement('p', { style: { color: "#f87171", fontSize: 13, marginTop: 10, textAlign: "center" }},
+        "Something went wrong — please try again.")
+  );
+}
+
 function HomePage({ setPage }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -936,6 +1088,32 @@ function HomePage({ setPage }) {
                 lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
               }}, "Some of the VC Funds in our circle"       )
             , React.createElement(VCNetworkGrid, {__self: this} )
+          )
+
+          /* Newsletter Subscribe */
+          , React.createElement('div', { className: "anim-up", style: {
+            background: COLORS.bgCard,
+            border: `1px solid ${COLORS.border}`,
+            borderRadius: 16,
+            padding: "clamp(40px, 5vw, 64px) clamp(24px, 6vw, 80px)",
+            marginTop: 60, marginBottom: 20,
+            display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+          }}
+            , React.createElement('div', { style: {
+                fontSize: 12, fontWeight: 600, textTransform: "uppercase",
+                letterSpacing: "0.15em", color: COLORS.accent, marginBottom: 14,
+              }}, "Stay Connected")
+            , React.createElement('h2', { style: {
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
+                lineHeight: 1.15, letterSpacing: "-0.02em",
+                color: COLORS.white, marginBottom: 14,
+              }}, "Get Updates from Raisable")
+            , React.createElement('p', { style: {
+                fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
+                maxWidth: 460, marginBottom: 32,
+              }}, "Get updates on events, programs, and opportunities — straight to your inbox.")
+            , React.createElement(NewsletterForm, null)
           )
         )
       )
