@@ -1,187 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Raisable.vc</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-img{max-width:100%;}
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Raisable.vc</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        img{max-width:100%;}
 
-/* ============================
-   RESPONSIVE — TABLET & MOBILE
-   Tested breakpoints:
-   - 1024px  iPad Pro 12.9"
-   - 860px   iPad Air / standard tablet
-   - 768px   iPad mini
-   - 600px   Large phone landscape
-   - 430px   iPhone Pro Max
-   - 375px   iPhone SE / standard
-   ============================ */
+        /* ============================
+           RESPONSIVE — TABLET & MOBILE
+           Tested breakpoints:
+           - 1024px  iPad Pro 12.9"
+           - 860px   iPad Air / standard tablet
+           - 768px   iPad mini
+           - 600px   Large phone landscape
+           - 430px   iPhone Pro Max
+           - 375px   iPhone SE / standard
+           ============================ */
 
-/* ── Tablet (≤1024px) ── */
-@media (max-width: 1024px) {
-  /* Slightly reduce hero photo area */
-  .hero-photos-wrap { width: 45% !important; }
-  .hero-text-wrap { width: min(65%, 100%) !important; }
-}
+        /* ── Tablet (≤1024px) ── */
+        @media (max-width: 1024px) {
+            /* Slightly reduce hero photo area */
+            .hero-photos-wrap { width: 45% !important; }
+            .hero-text-wrap { width: min(65%, 100%) !important; }
+        }
 
-/* ── Tablet (≤860px) ── */
-@media (max-width: 860px) {
-  /* Hero: hide photos, text full width */
-  .hero-photos-wrap { display: none !important; }
-  .hero-text-wrap {
-    width: 100% !important;
-    padding: 0 clamp(16px, 4vw, 40px) !important;
-  }
+        /* ── Tablet (≤860px) ── */
+        @media (max-width: 860px) {
+            /* Hero: hide photos, text full width */
+            .hero-photos-wrap { display: none !important; }
+            .hero-text-wrap {
+                width: 100% !important;
+                padding: 0 clamp(16px, 4vw, 40px) !important;
+            }
 
-  /* Stats: stack photo above counters */
-  .stats-flex {
-    flex-direction: column !important;
-  }
-  .stats-flex > div:first-child {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 220px !important;
-  }
+            /* Stats: stack photo above counters */
+            .stats-flex {
+                flex-direction: column !important;
+            }
+            .stats-flex > div:first-child {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 220px !important;
+            }
 
-  /* Vasyl card: stack vertically */
-  .vasyl-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-  .vasyl-divider { display: none !important; }
-  .vasyl-badges { flex-direction: row !important; flex-wrap: wrap !important; }
+            /* Vasyl card: stack vertically */
+            .vasyl-card {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .vasyl-divider { display: none !important; }
+            .vasyl-badges { flex-direction: row !important; flex-wrap: wrap !important; }
 
-  /* About intro: stack text + button */
-  .about-intro {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
+            /* About intro: stack text + button */
+            .about-intro {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
 
-  /* Feedback: arrows go below on small screens */
-  .feedback-outer {
-    flex-wrap: wrap !important;
-  }
-  .feedback-outer > .feedback-cards {
-    order: 1;
-    flex: 0 0 100%;
-    min-width: 100%;
-  }
-  .feedback-outer > button {
-    order: 2;
-    margin-top: 12px;
-  }
-}
+            /* Feedback: arrows go below on small screens */
+            .feedback-outer {
+                flex-wrap: wrap !important;
+            }
+            .feedback-outer > .feedback-cards {
+                order: 1;
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+            .feedback-outer > button {
+                order: 2;
+                margin-top: 12px;
+            }
+        }
 
-/* ── Mobile (≤600px) ── */
-@media (max-width: 600px) {
-  /* All 2-col grids collapse to 1 col */
-  .grid-auto { grid-template-columns: 1fr !important; }
+        /* ── Mobile (≤600px) ── */
+        @media (max-width: 600px) {
+            /* All 2-col grids collapse to 1 col */
+            .grid-auto { grid-template-columns: 1fr !important; }
 
-  /* Hero section less top padding */
-  .hero-section { padding-top: 100px !important; padding-bottom: 80px !important; }
+            /* Hero section less top padding */
+            .hero-section { padding-top: 100px !important; padding-bottom: 80px !important; }
 
-  /* Nav: tighten logo */
-  .nav-logo img { height: 28px !important; }
+            /* Nav: tighten logo */
+            .nav-logo img { height: 28px !important; }
 
-  /* Vasyl image smaller */
-  .vasyl-img { width: 120px !important; height: 120px !important; }
+            /* Vasyl image smaller */
+            .vasyl-img { width: 120px !important; height: 120px !important; }
 
-  /* Event cards: single column */
-  .events-grid { grid-template-columns: 1fr !important; }
+            /* Event cards: single column */
+            .events-grid { grid-template-columns: 1fr !important; }
 
-  /* Mentor grid: 1 col */
-  .mentor-grid { grid-template-columns: 1fr !important; }
+            /* Mentor grid: 1 col */
+            .mentor-grid { grid-template-columns: 1fr !important; }
 
-  /* Feedback cards: 1 col */
-  .feedback-cards { grid-template-columns: 1fr !important; }
+            /* Feedback cards: 1 col */
+            .feedback-cards { grid-template-columns: 1fr !important; }
 
-  /* Ambassador cards: 1 col */
-  .ambassador-grid { grid-template-columns: 1fr !important; }
+            /* Ambassador cards: 1 col */
+            .ambassador-grid { grid-template-columns: 1fr !important; }
 
-  /* Reduce section vertical padding */
-  section { padding-top: max(24px, 4vw) !important; padding-bottom: max(24px, 4vw) !important; }
-}
+            /* Reduce section vertical padding */
+            section { padding-top: max(24px, 4vw) !important; padding-bottom: max(24px, 4vw) !important; }
+        }
 
-/* ── Small mobile (≤375px) ── */
-@media (max-width: 375px) {
-  .hero-section h1 { font-size: clamp(20px, 8vw, 28px) !important; }
-}
+        /* ── Small mobile (≤375px) ── */
+        @media (max-width: 375px) {
+            .hero-section h1 { font-size: clamp(20px, 8vw, 28px) !important; }
+        }
 
 
-/* ── MailerLite dark theme override ── */
-.ml-embedded { width: 100%; }
-.ml-embedded .ml-form-embedWrapper {
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-.ml-embedded .ml-form-embedBody { padding: 0 !important; }
-.ml-embedded .ml-form-embedContent { display: none !important; }
-.ml-embedded .ml-form-fieldRow { padding: 0 !important; margin-bottom: 12px !important; }
-.ml-embedded .ml-form-fieldRow input[type="email"],
-.ml-embedded .ml-form-fieldRow input[type="text"] {
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(79,140,255,0.2) !important;
-  border-radius: 10px !important;
-  color: #f0f2f5 !important;
-  font-family: 'DM Sans', Inter, sans-serif !important;
-  font-size: 15px !important;
-  padding: 14px 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  transition: border 0.2s !important;
-}
-.ml-embedded .ml-form-fieldRow input::placeholder { color: #8b95a5 !important; }
-.ml-embedded .ml-form-fieldRow input:focus {
-  border-color: rgba(79,140,255,0.5) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(79,140,255,0.1) !important;
-}
-.ml-embedded .ml-form-checkboxRow { display: none !important; }
-.ml-embedded button[type="submit"],
-.ml-embedded .ml-form-embedSubmit button {
-  background: linear-gradient(135deg, #4f8cff 0%, #2d6fe8 100%) !important;
-  border: none !important;
-  border-radius: 10px !important;
-  color: #fff !important;
-  font-family: 'DM Sans', Inter, sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  padding: 14px 36px !important;
-  cursor: pointer !important;
-  width: 100% !important;
-  margin-top: 4px !important;
-  transition: opacity 0.2s, transform 0.15s !important;
-  letter-spacing: 0.02em !important;
-}
-.ml-embedded button[type="submit"]:hover,
-.ml-embedded .ml-form-embedSubmit button:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px) !important;
-}
-.ml-embedded .ml-form-successBody {
-  background: rgba(79,140,255,0.08) !important;
-  border: 1px solid rgba(79,140,255,0.2) !important;
-  border-radius: 10px !important;
-  color: #f0f2f5 !important;
-  padding: 20px !important;
-}
-</style>
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2251367');
-</script>
-<!-- End MailerLite Universal -->
+        /* ── MailerLite dark theme ── */
+        .ml-embedded{width:100%}
+        .ml-embedded .ml-form-embedWrapper{background:transparent!important;box-shadow:none!important;padding:0!important}
+        .ml-embedded .ml-form-embedBody{padding:0!important}
+        .ml-embedded .ml-form-embedContent{display:none!important}
+    </style>
+    <!-- MailerLite Universal -->
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+            .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+            n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2251367');
+    </script>
+    <!-- End MailerLite Universal -->
+    <!-- End MailerLite Universal -->
 </head>
 <body>
 <div id="root"></div>
@@ -262,18 +210,18 @@ const BG_SRC = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPD
 
 
 const COLORS = {
-  bg: "#0a0e17",
-  bgCard: "rgba(17,24,39,0.85)",
-  bgCardHover: "rgba(26,35,50,0.9)",
-  accent: "#4f8cff",
-  accentGlow: "rgba(79,140,255,0.15)",
-  accentSoft: "#2d4a7c",
-  gold: "#d4a853",
-  white: "#f0f2f5",
-  gray: "#8b95a5",
-  grayLight: "#c4cbd6",
-  border: "rgba(79,140,255,0.12)",
-  borderLight: "rgba(255,255,255,0.06)",
+    bg: "#0a0e17",
+    bgCard: "rgba(17,24,39,0.85)",
+    bgCardHover: "rgba(26,35,50,0.9)",
+    accent: "#4f8cff",
+    accentGlow: "rgba(79,140,255,0.15)",
+    accentSoft: "#2d4a7c",
+    gold: "#d4a853",
+    white: "#f0f2f5",
+    gray: "#8b95a5",
+    grayLight: "#c4cbd6",
+    border: "rgba(79,140,255,0.12)",
+    borderLight: "rgba(255,255,255,0.06)",
 };
 
 const fontLink = document.createElement("link");
@@ -348,1333 +296,1346 @@ document.head.appendChild(style);
 
 
 const VC_FUNDS = [
-  { name: "Unshackled Ventures", url: "https://www.unshackledvc.com/", logo: VC_UNSHACKLED, logoSvg: VC_UNSHACKLED_SVG },
-  { name: "One Way Ventures", url: "https://www.onewayvc.com/", logo: VC_ONEWAY, logoSvg: VC_ONEWAY_IMG },
-  { name: "OneValley Ventures", url: "https://www.onevalley.com/ventures/", logo: VC_ONEVALLEY, logoSvg: VC_ONEVALLEY_IMG },
-  { name: "TSV Capital", url: "https://www.tsvcap.com/", logo: VC_TSVC, logoSvg: VC_TSVC_IMG },
-  { name: "Network VC", url: "https://network.vc/", logo: VC_NETWORK, logoSvg: VC_NETWORK_IMG },
-  { name: "Geek Ventures", url: "https://geek.vc/", logo: VC_GEEK, logoSvg: VC_GEEK_IMG },
-  { name: "SID Venture Partners", url: "https://sid.fund/", logo: VC_SID, logoSvg: VC_SID_IMG },
-  { name: "Unpopular Ventures", url: "https://unpopular.vc", logo: VC_UNPOPULAR, logoSvg: VC_UNPOPULAR_IMG },
-  { name: "VU Venture Partners", url: "https://www.vuventurepartners.com/", logo: VC_VU, logoSvg: VC_VU_IMG },
-  { name: "Toloka VC", url: "https://www.toloka.vc/", logo: VC_TOLOKA, logoSvg: VC_TOLOKA_IMG },
-  { name: "Angel One Fund", url: "https://www.angelone.fund/", logo: VC_ANGEL, logoSvg: VC_ANGEL_IMG },
-  { name: "New Line Ventures", url: "https://www.newlineventures.com/", logo: VC_NEWLINE, logoSvg: VC_NEWLINE_IMG },
-  { name: "Zelda Ventures", url: "https://zelda.vc/", logo: VC_ZELDA, logoSvg: VC_ZELDA_IMG },
+    { name: "Unshackled Ventures", url: "https://www.unshackledvc.com/", logo: VC_UNSHACKLED, logoSvg: VC_UNSHACKLED_SVG },
+    { name: "One Way Ventures", url: "https://www.onewayvc.com/", logo: VC_ONEWAY, logoSvg: VC_ONEWAY_IMG },
+    { name: "OneValley Ventures", url: "https://www.onevalley.com/ventures/", logo: VC_ONEVALLEY, logoSvg: VC_ONEVALLEY_IMG },
+    { name: "TSV Capital", url: "https://www.tsvcap.com/", logo: VC_TSVC, logoSvg: VC_TSVC_IMG },
+    { name: "Network VC", url: "https://network.vc/", logo: VC_NETWORK, logoSvg: VC_NETWORK_IMG },
+    { name: "Geek Ventures", url: "https://geek.vc/", logo: VC_GEEK, logoSvg: VC_GEEK_IMG },
+    { name: "SID Venture Partners", url: "https://sid.fund/", logo: VC_SID, logoSvg: VC_SID_IMG },
+    { name: "Unpopular Ventures", url: "https://unpopular.vc", logo: VC_UNPOPULAR, logoSvg: VC_UNPOPULAR_IMG },
+    { name: "VU Venture Partners", url: "https://www.vuventurepartners.com/", logo: VC_VU, logoSvg: VC_VU_IMG },
+    { name: "Toloka VC", url: "https://www.toloka.vc/", logo: VC_TOLOKA, logoSvg: VC_TOLOKA_IMG },
+    { name: "Angel One Fund", url: "https://www.angelone.fund/", logo: VC_ANGEL, logoSvg: VC_ANGEL_IMG },
+    { name: "New Line Ventures", url: "https://www.newlineventures.com/", logo: VC_NEWLINE, logoSvg: VC_NEWLINE_IMG },
+    { name: "Zelda Ventures", url: "https://zelda.vc/", logo: VC_ZELDA, logoSvg: VC_ZELDA_IMG },
 ];
 
 
 // Reusable link button component
 function LinkButton({ href, children, style: s = {} }) {
-  return (
-    React.createElement('a', { href: href, target: "_blank", rel: "noopener noreferrer" ,
-      style: {
-        display: "inline-block", padding: "16px 44px", borderRadius: 10,
-        fontSize: 15, fontWeight: 600, cursor: "pointer", border: "none",
-        textDecoration: "none", textAlign: "center",
-        position: "relative", zIndex: 10,
-        ...s,
-      }}, children)
-  );
+    return (
+        React.createElement('a', { href: href, target: "_blank", rel: "noopener noreferrer" ,
+            style: {
+                display: "inline-block", padding: "16px 44px", borderRadius: 10,
+                fontSize: 15, fontWeight: 600, cursor: "pointer", border: "none",
+                textDecoration: "none", textAlign: "center",
+                position: "relative", zIndex: 10,
+                ...s,
+            }}, children)
+    );
 }
 
 // ─── NAV ───
 function Nav({ page, setPage }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
+    useEffect(() => {
+        const h = () => setScrolled(window.scrollY > 40);
+        window.addEventListener("scroll", h);
+        return () => window.removeEventListener("scroll", h);
+    }, []);
 
-  const links = [
-    { key: "about", label: "About Us" },
-  ];
+    const links = [
+        { key: "about", label: "About Us" },
+    ];
 
-  return (
-    React.createElement('nav', { style: {
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? "rgba(10,14,23,0.92)" : "transparent",
-      backdropFilter: scrolled ? "blur(20px)" : "none",
-      borderBottom: scrolled ? `1px solid ${COLORS.borderLight}` : "none",
-      transition: "all 0.4s ease",
-      padding: "0 clamp(20px, 4vw, 60px)",
-    }}
-      , React.createElement('div', { style: {
-        maxWidth: 1280, margin: "0 auto", display: "flex",
-        alignItems: "center", justifyContent: "space-between",
-        height: scrolled ? 64 : 80, transition: "height 0.4s ease",
-      }}
-        , React.createElement('div', { onClick: () => { setPage("home"); window.scrollTo(0,0); },
-          style: { cursor: "pointer", display: "flex", alignItems: "center" }}
-          , React.createElement('img', { src: LOGO_SRC, alt: "Raisable", style: {
-            height: 22, objectFit: "contain",
-          }} )
+    return (
+        React.createElement('nav', { style: {
+                    position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
+                    background: scrolled ? "rgba(10,14,23,0.92)" : "transparent",
+                    backdropFilter: scrolled ? "blur(20px)" : "none",
+                    borderBottom: scrolled ? `1px solid ${COLORS.borderLight}` : "none",
+                    transition: "all 0.4s ease",
+                    padding: "0 clamp(20px, 4vw, 60px)",
+                }}
+            , React.createElement('div', { style: {
+                        maxWidth: 1280, margin: "0 auto", display: "flex",
+                        alignItems: "center", justifyContent: "space-between",
+                        height: scrolled ? 64 : 80, transition: "height 0.4s ease",
+                    }}
+                , React.createElement('div', { onClick: () => { setPage("home"); window.scrollTo(0,0); },
+                        style: { cursor: "pointer", display: "flex", alignItems: "center" }}
+                    , React.createElement('img', { src: LOGO_SRC, alt: "Raisable", style: {
+                            height: 22, objectFit: "contain",
+                        }} )
+                )
+
+                /* Desktop links */
+                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 32 },
+                        className: "nav-desktop"}
+                    , links.map(l => (
+                        React.createElement('span', { key: l.key, onClick: () => { setPage(l.key); window.scrollTo(0,0); setMobileOpen(false); },
+                                style: {
+                                    cursor: "pointer", fontSize: 14, fontWeight: 500,
+                                    color: page === l.key ? COLORS.accent : COLORS.grayLight,
+                                    transition: "color 0.3s",
+                                    position: "relative",
+                                },
+                                onMouseEnter: e => e.target.style.color = COLORS.accent,
+                                onMouseLeave: e => { if (page !== l.key) e.target.style.color = COLORS.grayLight; }}
+                            , l.label)
+                    ))
+                )
+
+                /* Mobile hamburger */
+                , React.createElement('div', { onClick: () => setMobileOpen(!mobileOpen),
+                        style: { display: "none", cursor: "pointer", flexDirection: "column", gap: 5 },
+                        className: "nav-mobile-btn"}
+                    , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
+                            transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none" }} )
+                    , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
+                            opacity: mobileOpen ? 0 : 1 }} )
+                    , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
+                            transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} )
+                )
+            )
+
+            /* Mobile menu */
+            , mobileOpen && (
+            React.createElement('div', { style: {
+                        position: "absolute", top: "100%", left: 0, right: 0,
+                        background: "rgba(10,14,23,0.97)", backdropFilter: "blur(20px)",
+                        padding: "20px 30px 30px", borderBottom: `1px solid ${COLORS.borderLight}`,
+                        animation: "fadeIn 0.3s ease",
+                    }}
+                , links.map(l => (
+                    React.createElement('div', { key: l.key, onClick: () => { setPage(l.key); window.scrollTo(0,0); setMobileOpen(false); },
+                        style: {
+                            padding: "14px 0", fontSize: 16, fontWeight: 500, cursor: "pointer",
+                            color: page === l.key ? COLORS.accent : COLORS.grayLight,
+                            borderBottom: `1px solid ${COLORS.borderLight}`,
+                        }}, l.label)
+                ))
+            )
         )
 
-        /* Desktop links */
-        , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 32 },
-          className: "nav-desktop"}
-          , links.map(l => (
-            React.createElement('span', { key: l.key, onClick: () => { setPage(l.key); window.scrollTo(0,0); setMobileOpen(false); },
-              style: {
-                cursor: "pointer", fontSize: 14, fontWeight: 500,
-                color: page === l.key ? COLORS.accent : COLORS.grayLight,
-                transition: "color 0.3s",
-                position: "relative",
-              },
-              onMouseEnter: e => e.target.style.color = COLORS.accent,
-              onMouseLeave: e => { if (page !== l.key) e.target.style.color = COLORS.grayLight; }}
-, l.label)
-          ))
-        )
-
-        /* Mobile hamburger */
-        , React.createElement('div', { onClick: () => setMobileOpen(!mobileOpen),
-          style: { display: "none", cursor: "pointer", flexDirection: "column", gap: 5 },
-          className: "nav-mobile-btn"}
-          , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
-            transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none" }} )
-          , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
-            opacity: mobileOpen ? 0 : 1 }} )
-          , React.createElement('span', { style: { width: 24, height: 2, background: COLORS.white, borderRadius: 2, transition: "all 0.3s",
-            transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} )
-        )
-      )
-
-      /* Mobile menu */
-      , mobileOpen && (
-        React.createElement('div', { style: {
-          position: "absolute", top: "100%", left: 0, right: 0,
-          background: "rgba(10,14,23,0.97)", backdropFilter: "blur(20px)",
-          padding: "20px 30px 30px", borderBottom: `1px solid ${COLORS.borderLight}`,
-          animation: "fadeIn 0.3s ease",
-        }}
-          , links.map(l => (
-            React.createElement('div', { key: l.key, onClick: () => { setPage(l.key); window.scrollTo(0,0); setMobileOpen(false); },
-              style: {
-                padding: "14px 0", fontSize: 16, fontWeight: 500, cursor: "pointer",
-                color: page === l.key ? COLORS.accent : COLORS.grayLight,
-                borderBottom: `1px solid ${COLORS.borderLight}`,
-              }}, l.label)
-          ))
-        )
-      )
-
-      , React.createElement('style', {__self: this}, `
+            , React.createElement('style', {__self: this}, `
         @media (max-width: 860px) {
           .nav-desktop { display: none !important; }
           .nav-mobile-btn { display: flex !important; }
         }
       `)
-    )
-  );
+        )
+    );
 }
 
 // ─── STAT COUNTER ───
 function StatCounter({ value, prefix = "", suffix = "", label, sublabel }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const num = parseInt(value.replace(/\D/g, ""));
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const num = parseInt(value.replace(/\D/g, ""));
 
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        let start = 0;
-        const step = Math.ceil(num / 40);
-        const iv = setInterval(() => {
-          start += step;
-          if (start >= num) { start = num; clearInterval(iv); }
-          setCount(start);
-        }, 30);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [num]);
+    useEffect(() => {
+        const obs = new IntersectionObserver(([e]) => {
+            if (e.isIntersecting) {
+                let start = 0;
+                const step = Math.ceil(num / 40);
+                const iv = setInterval(() => {
+                    start += step;
+                    if (start >= num) { start = num; clearInterval(iv); }
+                    setCount(start);
+                }, 30);
+                obs.disconnect();
+            }
+        }, { threshold: 0.3 });
+        if (ref.current) obs.observe(ref.current);
+        return () => obs.disconnect();
+    }, [num]);
 
-  return (
-    React.createElement('div', { ref: ref, style: { textAlign: "center" }}
-      , React.createElement('div', { style: {
-        fontFamily: "'Playfair Display', serif", fontSize: "clamp(32px, 4vw, 52px)",
-        fontWeight: 800, letterSpacing: "-0.02em",
-        background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.gold})`,
-        WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-      }}, prefix, count, suffix)
-      , React.createElement('div', { style: { fontSize: 15, color: COLORS.white, marginTop: 6, fontWeight: 600 }}, label)
-      , sublabel && React.createElement('div', { style: { fontSize: 12, color: COLORS.gray, marginTop: 2 }}, sublabel)
-    )
-  );
+    return (
+        React.createElement('div', { ref: ref, style: { textAlign: "center" }}
+            , React.createElement('div', { style: {
+                    fontFamily: "'Playfair Display', serif", fontSize: "clamp(32px, 4vw, 52px)",
+                    fontWeight: 800, letterSpacing: "-0.02em",
+                    background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.gold})`,
+                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                }}, prefix, count, suffix)
+            , React.createElement('div', { style: { fontSize: 15, color: COLORS.white, marginTop: 6, fontWeight: 600 }}, label)
+            , sublabel && React.createElement('div', { style: { fontSize: 12, color: COLORS.gray, marginTop: 2 }}, sublabel)
+        )
+    );
 }
 
 // ─── SECTION CARD ───
 function Card({ children, hover = true, style: s = {} }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    React.createElement('div', {
-      onMouseEnter: () => setHovered(true),
-      onMouseLeave: () => setHovered(false),
-      style: {
-        background: hovered && hover ? COLORS.bgCardHover : COLORS.bgCard,
-        border: `1px solid ${hovered && hover ? COLORS.accent + "30" : COLORS.border}`,
-        borderRadius: 16, padding: "clamp(24px, 3vw, 36px)",
-        transition: "all 0.4s ease",
-        boxShadow: hovered && hover ? `0 8px 40px ${COLORS.accentGlow}` : "none",
-        ...s,
-      }}
-, children)
-  );
+    const [hovered, setHovered] = useState(false);
+    return (
+        React.createElement('div', {
+                onMouseEnter: () => setHovered(true),
+                onMouseLeave: () => setHovered(false),
+                style: {
+                    background: hovered && hover ? COLORS.bgCardHover : COLORS.bgCard,
+                    border: `1px solid ${hovered && hover ? COLORS.accent + "30" : COLORS.border}`,
+                    borderRadius: 16, padding: "clamp(24px, 3vw, 36px)",
+                    transition: "all 0.4s ease",
+                    boxShadow: hovered && hover ? `0 8px 40px ${COLORS.accentGlow}` : "none",
+                    ...s,
+                }}
+            , children)
+    );
 }
 
 // ─── MENTOR PHOTO ───
 function MentorPhoto({ src, name }) {
-  const [imgSrc, setImgSrc] = useState(src);
-  const [attempts, setAttempts] = useState(0);
-  const initials = name.split(" ").map(n => n[0]).join("");
+    const [imgSrc, setImgSrc] = useState(src);
+    const [attempts, setAttempts] = useState(0);
+    const initials = name.split(" ").map(n => n[0]).join("");
 
-  const handleError = () => {
-    if (attempts < 1) {
-      setAttempts(1);
-      setImgSrc(null);
+    const handleError = () => {
+        if (attempts < 1) {
+            setAttempts(1);
+            setImgSrc(null);
+        }
+    };
+
+    if (!imgSrc || attempts >= 1) {
+        return (
+            React.createElement('div', { style: {
+                    width: 88, height: 88, minWidth: 88, borderRadius: "50%",
+                    background: `linear-gradient(135deg, ${COLORS.accent}30, ${COLORS.gold}20)`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700,
+                    color: COLORS.accent,
+                }}, initials)
+        );
     }
-  };
 
-  if (!imgSrc || attempts >= 1) {
     return (
-      React.createElement('div', { style: {
-        width: 88, height: 88, minWidth: 88, borderRadius: "50%",
-        background: `linear-gradient(135deg, ${COLORS.accent}30, ${COLORS.gold}20)`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700,
-        color: COLORS.accent,
-      }}, initials)
+        React.createElement('img', {
+            src: imgSrc,
+            alt: name,
+            onError: handleError,
+            referrerPolicy: "no-referrer",
+            crossOrigin: "anonymous",
+            style: {
+                width: 88, height: 88, minWidth: 88, borderRadius: "50%",
+                objectFit: "cover",
+                border: `2px solid ${COLORS.accent}30`,
+                background: `linear-gradient(135deg, ${COLORS.accent}15, ${COLORS.gold}10)`,
+            }}
+        )
     );
-  }
-
-  return (
-    React.createElement('img', {
-      src: imgSrc,
-      alt: name,
-      onError: handleError,
-      referrerPolicy: "no-referrer",
-      crossOrigin: "anonymous",
-      style: {
-        width: 88, height: 88, minWidth: 88, borderRadius: "50%",
-        objectFit: "cover",
-        border: `2px solid ${COLORS.accent}30`,
-        background: `linear-gradient(135deg, ${COLORS.accent}15, ${COLORS.gold}10)`,
-      }}
-    )
-  );
 }
 
 // ─── SECTION HEADING ───
 function VCNetworkGrid() {
-  return (
-    React.createElement('div', { style: {
-      display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-      gap: 12,
-    }}
-      , VC_FUNDS.map((vc, i) => (
-        React.createElement('a', { key: i, href: vc.url, target: "_blank", rel: "noopener noreferrer" ,
-          style: {
-            padding: "20px 18px", borderRadius: 12,
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.10)",
-            textDecoration: "none", transition: "all 0.3s",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            minHeight: 64, cursor: "pointer",
-            textAlign: "center",
-          },
-          onMouseEnter: e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.background = "rgba(255,255,255,0.12)"; e.currentTarget.style.borderColor = "rgba(79,140,255,0.4)"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(79,140,255,0.12)"; },
-          onMouseLeave: e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
+    return (
+        React.createElement('div', { style: {
+                    display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                    gap: 12,
+                }}
+            , VC_FUNDS.map((vc, i) => (
+                React.createElement('a', { key: i, href: vc.url, target: "_blank", rel: "noopener noreferrer" ,
+                        style: {
+                            padding: "20px 18px", borderRadius: 12,
+                            background: "rgba(255,255,255,0.06)",
+                            border: "1px solid rgba(255,255,255,0.10)",
+                            textDecoration: "none", transition: "all 0.3s",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            minHeight: 64, cursor: "pointer",
+                            textAlign: "center",
+                        },
+                        onMouseEnter: e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.background = "rgba(255,255,255,0.12)"; e.currentTarget.style.borderColor = "rgba(79,140,255,0.4)"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(79,140,255,0.12)"; },
+                        onMouseLeave: e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
 
-          , vc.logoSvg ? (
-          React.createElement('img', { src: vc.logoSvg, alt: vc.name, style: { maxHeight: 64, maxWidth: 320, objectFit: "contain", opacity: 0.85 }} )
-        ) : (
-          React.createElement('span', { style: { fontSize: 15, fontWeight: 600, color: "rgba(255,255,255,0.85)", letterSpacing: "0.01em", lineHeight: 1.3 }}, vc.name)
+                    , vc.logoSvg ? (
+                        React.createElement('img', { src: vc.logoSvg, alt: vc.name, style: { maxHeight: 64, maxWidth: 320, objectFit: "contain", opacity: 0.85 }} )
+                    ) : (
+                        React.createElement('span', { style: { fontSize: 15, fontWeight: 600, color: "rgba(255,255,255,0.85)", letterSpacing: "0.01em", lineHeight: 1.3 }}, vc.name)
+                    )
+                )
+            ))
         )
-        )
-      ))
-    )
-  );
+    );
 }
 
 function FeedbackCarousel() {
-  const feedbacks = [
-    { name: "Andrew Sydoruk", title: "CEO at SmartTek Solutions",
-      quote: "Thanks to Raisable and Vasyl Dub \u2014 we refined our positioning, built a clear GTM strategy, and were selected for a top US cybersecurity accelerator." },
-    { name: "Ruslan Okhrimovych", title: "CEO at Effie AI",
-      quote: "Joining Raisable Founder Hub was a game-changer \u2014 we secured $1.2M+ in funding, signed 3 US-based pilots, and significantly expanded our network." },
-    { name: "Chuck E", title: "Professor at Stanford, Innovation and Entrepreneurship Systems",
-      quote: "I've had the pleasure of working with Vasyl Dub as a guest speaker and mentor at Stanford. I'm truly impressed by his energy, persistence, and entrepreneurial spirit." },
-    { name: "Serhii Zatsarynin", title: "CEO at Ovul",
-      quote: "Real execution \u2014 validate, sell in the US, and understand how VCs think. No fluff, just hands-on GTM, fundraising, and a strong global founder network." },
-  ];
-  const [page, setPage] = useState(0);
-  const maxPage = Math.ceil(feedbacks.length / 2) - 1;
-  const visible = feedbacks.slice(page * 2, page * 2 + 2);
-  return (
-    React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}
-      /* Left arrow */
-      , React.createElement('button', { onClick: () => setPage(p => Math.max(0, p - 1)),
-        style: {
-          flexShrink: 0, width: 48, height: 48, borderRadius: "50%",
-          border: `1px solid ${page === 0 ? COLORS.borderLight : COLORS.accent}`,
-          background: page === 0 ? "transparent" : COLORS.accent + "15",
-          color: page === 0 ? COLORS.gray : COLORS.accent,
-          fontSize: 22, cursor: page === 0 ? "default" : "pointer",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          transition: "all 0.3s", opacity: page === 0 ? 0.35 : 1,
-        }}, "\u2190")
+    const feedbacks = [
+        { name: "Andrew Sydoruk", title: "CEO at SmartTek Solutions",
+            quote: "Thanks to Raisable and Vasyl Dub \u2014 we refined our positioning, built a clear GTM strategy, and were selected for a top US cybersecurity accelerator." },
+        { name: "Ruslan Okhrimovych", title: "CEO at Effie AI",
+            quote: "Joining Raisable Founder Hub was a game-changer \u2014 we secured $1.2M+ in funding, signed 3 US-based pilots, and significantly expanded our network." },
+        { name: "Chuck E", title: "Professor at Stanford, Innovation and Entrepreneurship Systems",
+            quote: "I've had the pleasure of working with Vasyl Dub as a guest speaker and mentor at Stanford. I'm truly impressed by his energy, persistence, and entrepreneurial spirit." },
+        { name: "Serhii Zatsarynin", title: "CEO at Ovul",
+            quote: "Real execution \u2014 validate, sell in the US, and understand how VCs think. No fluff, just hands-on GTM, fundraising, and a strong global founder network." },
+    ];
+    const [page, setPage] = useState(0);
+    const maxPage = Math.ceil(feedbacks.length / 2) - 1;
+    const visible = feedbacks.slice(page * 2, page * 2 + 2);
+    return (
+        React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}
+            /* Left arrow */
+            , React.createElement('button', { onClick: () => setPage(p => Math.max(0, p - 1)),
+                style: {
+                    flexShrink: 0, width: 48, height: 48, borderRadius: "50%",
+                    border: `1px solid ${page === 0 ? COLORS.borderLight : COLORS.accent}`,
+                    background: page === 0 ? "transparent" : COLORS.accent + "15",
+                    color: page === 0 ? COLORS.gray : COLORS.accent,
+                    fontSize: 22, cursor: page === 0 ? "default" : "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    transition: "all 0.3s", opacity: page === 0 ? 0.35 : 1,
+                }}, "\u2190")
 
-      , React.createElement('div', { style: { flex: 1, minWidth: 0, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}
-        , visible.map((fb, i) => (
-          React.createElement('div', { key: page * 2 + i, style: { animation: "fadeIn 0.4s ease" }}
-            , React.createElement(Card, { style: { padding: "36px 32px", height: "100%" }}
-              , React.createElement('div', { style: { fontSize: 48, color: COLORS.accent, marginBottom: 16, fontFamily: "'Playfair Display', serif", lineHeight: 1 }}, "\u201C")
-              , React.createElement('p', { style: { fontSize: 18, color: COLORS.grayLight, lineHeight: 1.8, fontStyle: "italic", marginBottom: 24 }}, fb.quote)
-              , React.createElement('div', {__self: this}
-                , React.createElement('div', { style: { fontSize: 20, fontWeight: 700, color: COLORS.white }}, fb.name)
-                , React.createElement('div', { style: { fontSize: 15, color: COLORS.gray, marginTop: 4 }}, fb.title)
-              )
+            , React.createElement('div', { style: { flex: 1, minWidth: 0, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}
+                , visible.map((fb, i) => (
+                    React.createElement('div', { key: page * 2 + i, style: { animation: "fadeIn 0.4s ease" }}
+                        , React.createElement(Card, { style: { padding: "36px 32px", height: "100%" }}
+                            , React.createElement('div', { style: { fontSize: 48, color: COLORS.accent, marginBottom: 16, fontFamily: "'Playfair Display', serif", lineHeight: 1 }}, "\u201C")
+                            , React.createElement('p', { style: { fontSize: 18, color: COLORS.grayLight, lineHeight: 1.8, fontStyle: "italic", marginBottom: 24 }}, fb.quote)
+                            , React.createElement('div', {__self: this}
+                                , React.createElement('div', { style: { fontSize: 20, fontWeight: 700, color: COLORS.white }}, fb.name)
+                                , React.createElement('div', { style: { fontSize: 15, color: COLORS.gray, marginTop: 4 }}, fb.title)
+                            )
+                        )
+                    )
+                ))
             )
-          )
-        ))
-      )
 
-      /* Right arrow */
-      , React.createElement('button', { onClick: () => setPage(p => Math.min(maxPage, p + 1)),
-        style: {
-          flexShrink: 0, width: 48, height: 48, borderRadius: "50%",
-          border: `1px solid ${page === maxPage ? COLORS.borderLight : COLORS.accent}`,
-          background: page === maxPage ? "transparent" : COLORS.accent + "15",
-          color: page === maxPage ? COLORS.gray : COLORS.accent,
-          fontSize: 22, cursor: page === maxPage ? "default" : "pointer",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          transition: "all 0.3s", opacity: page === maxPage ? 0.35 : 1,
-        }}, "\u2192")
-    )
-  );
+            /* Right arrow */
+            , React.createElement('button', { onClick: () => setPage(p => Math.min(maxPage, p + 1)),
+                style: {
+                    flexShrink: 0, width: 48, height: 48, borderRadius: "50%",
+                    border: `1px solid ${page === maxPage ? COLORS.borderLight : COLORS.accent}`,
+                    background: page === maxPage ? "transparent" : COLORS.accent + "15",
+                    color: page === maxPage ? COLORS.gray : COLORS.accent,
+                    fontSize: 22, cursor: page === maxPage ? "default" : "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    transition: "all 0.3s", opacity: page === maxPage ? 0.35 : 1,
+                }}, "\u2192")
+        )
+    );
 }
 
 function ContactForm() {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [body, setBody] = useState("");
-  const maxChars = 1000;
-  const remaining = maxChars - body.length;
-  const canSend = email.trim() && subject.trim() && body.trim();
-  const handleSend = () => {
-    const fullBody = `From: ${email}\n\n${body}`;
-    window.open(`mailto:ops@raisable.vc?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullBody)}`, "_blank");
-  };
-  const inputStyle = {
-    width: "100%", padding: "14px 16px", borderRadius: 10,
-    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.border}`,
-    color: COLORS.white, fontSize: 15, fontFamily: "'DM Sans', sans-serif",
-    outline: "none", transition: "border 0.3s",
-  };
-  return (
-    React.createElement(Card, { style: { padding: "40px 36px", maxWidth: 700 }}
-      , React.createElement('div', { style: { marginBottom: 20 }}
-        , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray, marginBottom: 8, display: "block" }}, "Your Email" )
-        , React.createElement('input', { type: "email", value: email, onChange: e => setEmail(e.target.value),
-          placeholder: "you@company.com", style: inputStyle,
-          onFocus: e => e.target.style.borderColor = COLORS.accent,
-          onBlur: e => e.target.style.borderColor = COLORS.border} )
-      )
-      , React.createElement('div', { style: { marginBottom: 20 }}
-        , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray, marginBottom: 8, display: "block" }}, "Subject")
-        , React.createElement('input', { type: "text", value: subject, onChange: e => setSubject(e.target.value),
-          placeholder: "What is this about?"   , style: inputStyle,
-          onFocus: e => e.target.style.borderColor = COLORS.accent,
-          onBlur: e => e.target.style.borderColor = COLORS.border} )
-      )
-      , React.createElement('div', { style: { marginBottom: 20 }}
-        , React.createElement('div', { style: { display: "flex", justifyContent: "space-between", marginBottom: 8 }}
-          , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray }}, "Message")
-          , React.createElement('span', { style: { fontSize: 12, color: remaining < 100 ? "#e07be0" : COLORS.gray }}, remaining, " characters left"  )
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [body, setBody] = useState("");
+    const maxChars = 1000;
+    const remaining = maxChars - body.length;
+    const canSend = email.trim() && subject.trim() && body.trim();
+    const handleSend = () => {
+        const fullBody = `From: ${email}\n\n${body}`;
+        window.open(`mailto:ops@raisable.vc?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullBody)}`, "_blank");
+    };
+    const inputStyle = {
+        width: "100%", padding: "14px 16px", borderRadius: 10,
+        background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.border}`,
+        color: COLORS.white, fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+        outline: "none", transition: "border 0.3s",
+    };
+    return (
+        React.createElement(Card, { style: { padding: "40px 36px", maxWidth: 700 }}
+            , React.createElement('div', { style: { marginBottom: 20 }}
+                , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray, marginBottom: 8, display: "block" }}, "Your Email" )
+                , React.createElement('input', { type: "email", value: email, onChange: e => setEmail(e.target.value),
+                    placeholder: "you@company.com", style: inputStyle,
+                    onFocus: e => e.target.style.borderColor = COLORS.accent,
+                    onBlur: e => e.target.style.borderColor = COLORS.border} )
+            )
+            , React.createElement('div', { style: { marginBottom: 20 }}
+                , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray, marginBottom: 8, display: "block" }}, "Subject")
+                , React.createElement('input', { type: "text", value: subject, onChange: e => setSubject(e.target.value),
+                    placeholder: "What is this about?"   , style: inputStyle,
+                    onFocus: e => e.target.style.borderColor = COLORS.accent,
+                    onBlur: e => e.target.style.borderColor = COLORS.border} )
+            )
+            , React.createElement('div', { style: { marginBottom: 20 }}
+                , React.createElement('div', { style: { display: "flex", justifyContent: "space-between", marginBottom: 8 }}
+                    , React.createElement('label', { style: { fontSize: 13, color: COLORS.gray }}, "Message")
+                    , React.createElement('span', { style: { fontSize: 12, color: remaining < 100 ? "#e07be0" : COLORS.gray }}, remaining, " characters left"  )
+                )
+                , React.createElement('textarea', { value: body, onChange: e => { if (e.target.value.length <= maxChars) setBody(e.target.value); },
+                    placeholder: "Tell us how we can help..."     , rows: 6,
+                    style: { ...inputStyle, resize: "vertical", minHeight: 140 },
+                    onFocus: e => e.target.style.borderColor = COLORS.accent,
+                    onBlur: e => e.target.style.borderColor = COLORS.border} )
+            )
+            , React.createElement('button', { onClick: handleSend, disabled: !canSend,
+                style: {
+                    padding: "14px 40px", borderRadius: 10, border: "none",
+                    cursor: canSend ? "pointer" : "default",
+                    background: canSend ? `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)` : COLORS.gray,
+                    color: "white", fontSize: 16, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+                    boxShadow: canSend ? `0 4px 20px ${COLORS.accentGlow}` : "none",
+                    transition: "all 0.3s", opacity: canSend ? 1 : 0.5,
+                }}, "Send")
         )
-        , React.createElement('textarea', { value: body, onChange: e => { if (e.target.value.length <= maxChars) setBody(e.target.value); },
-          placeholder: "Tell us how we can help..."     , rows: 6,
-          style: { ...inputStyle, resize: "vertical", minHeight: 140 },
-          onFocus: e => e.target.style.borderColor = COLORS.accent,
-          onBlur: e => e.target.style.borderColor = COLORS.border} )
-      )
-      , React.createElement('button', { onClick: handleSend, disabled: !canSend,
-        style: {
-          padding: "14px 40px", borderRadius: 10, border: "none",
-          cursor: canSend ? "pointer" : "default",
-          background: canSend ? `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)` : COLORS.gray,
-          color: "white", fontSize: 16, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
-          boxShadow: canSend ? `0 4px 20px ${COLORS.accentGlow}` : "none",
-          transition: "all 0.3s", opacity: canSend ? 1 : 0.5,
-        }}, "Send")
-    )
-  );
+    );
 }
 
 function SectionHead({ tag, title, sub }) {
-  return (
-    React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
-      , tag && React.createElement('div', { style: {
-        fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.15em",
-        color: COLORS.accent, marginBottom: 12,
-      }}, tag)
-      , React.createElement('h2', { style: {
-        fontFamily: "'Playfair Display', serif",
-        fontSize: "clamp(28px, 4vw, 46px)", fontWeight: 700,
-        lineHeight: 1.15, letterSpacing: "-0.02em",
-        maxWidth: 700,
-      }}, title)
-      , sub && React.createElement('p', { style: {
-        fontSize: 16, color: COLORS.gray, marginTop: 16, lineHeight: 1.7, maxWidth: 600,
-      }}, sub)
-    )
-  );
+    return (
+        React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
+            , tag && React.createElement('div', { style: {
+                fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.15em",
+                color: COLORS.accent, marginBottom: 12,
+            }}, tag)
+            , React.createElement('h2', { style: {
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(28px, 4vw, 46px)", fontWeight: 700,
+                    lineHeight: 1.15, letterSpacing: "-0.02em",
+                    maxWidth: 700,
+                }}, title)
+            , sub && React.createElement('p', { style: {
+                fontSize: 16, color: COLORS.gray, marginTop: 16, lineHeight: 1.7, maxWidth: 600,
+            }}, sub)
+        )
+    );
 }
 
 // ─── BOOTCAMP CAROUSEL ───
 function BootcampCarousel() {
-  const photos = [BOOT_BERKELEY, BOOT_1, BOOT_8, BOOT_DINNER, BOOT_3, BOOT_5, BOOT_2, BOOT_9, BOOT_6, BOOT_4, BOOT_7];
-  const [idx, setIdx] = useState(0);
-  const next = () => setIdx((idx + 1) % photos.length);
-  const prev = () => setIdx((idx - 1 + photos.length) % photos.length);
-  useEffect(() => { const t = setInterval(next, 4000); return () => clearInterval(t); }, [idx]);
-  return (
-    React.createElement('div', { className: "anim-up", style: { position: "relative", marginBottom: 60 }}
-      , React.createElement('div', { style: { display: "flex", gap: 16, overflow: "hidden", borderRadius: 16 }}
-        , [0, 1, 2].map(offset => {
-          const photoIdx = (idx + offset) % photos.length;
-          return (
-            React.createElement('div', { key: offset, style: {
-              flex: "0 0 calc(33.33% - 11px)", borderRadius: 12, overflow: "hidden",
-              transition: "all 0.5s ease",
-            }}
-              , React.createElement('img', { src: photos[photoIdx], alt: `Bootcamp ${photoIdx + 1}`, style: {
-                width: "100%", height: 280, objectFit: "cover", display: "block",
-                borderRadius: 12, border: `1px solid ${COLORS.border}`,
-              }} )
+    const photos = [BOOT_BERKELEY, BOOT_1, BOOT_8, BOOT_DINNER, BOOT_3, BOOT_5, BOOT_2, BOOT_9, BOOT_6, BOOT_4, BOOT_7];
+    const [idx, setIdx] = useState(0);
+    const next = () => setIdx((idx + 1) % photos.length);
+    const prev = () => setIdx((idx - 1 + photos.length) % photos.length);
+    useEffect(() => { const t = setInterval(next, 4000); return () => clearInterval(t); }, [idx]);
+    return (
+        React.createElement('div', { className: "anim-up", style: { position: "relative", marginBottom: 60 }}
+            , React.createElement('div', { style: { display: "flex", gap: 16, overflow: "hidden", borderRadius: 16 }}
+                , [0, 1, 2].map(offset => {
+                    const photoIdx = (idx + offset) % photos.length;
+                    return (
+                        React.createElement('div', { key: offset, style: {
+                                    flex: "0 0 calc(33.33% - 11px)", borderRadius: 12, overflow: "hidden",
+                                    transition: "all 0.5s ease",
+                                }}
+                            , React.createElement('img', { src: photos[photoIdx], alt: `Bootcamp ${photoIdx + 1}`, style: {
+                                    width: "100%", height: 280, objectFit: "cover", display: "block",
+                                    borderRadius: 12, border: `1px solid ${COLORS.border}`,
+                                }} )
+                        )
+                    );
+                })
             )
-          );
-        })
-      )
-      , React.createElement('button', { onClick: prev, style: {
-        position: "absolute", left: -16, top: "50%", transform: "translateY(-50%)",
-        width: 40, height: 40, borderRadius: "50%", border: "none",
-        background: COLORS.accent, color: "white", fontSize: 18,
-        cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: `0 4px 20px ${COLORS.accentGlow}`,
-      }}, "‹")
-      , React.createElement('button', { onClick: next, style: {
-        position: "absolute", right: -16, top: "50%", transform: "translateY(-50%)",
-        width: 40, height: 40, borderRadius: "50%", border: "none",
-        background: COLORS.accent, color: "white", fontSize: 18,
-        cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: `0 4px 20px ${COLORS.accentGlow}`,
-      }}, "›")
-      , React.createElement('div', { style: { display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}
-        , photos.map((_, i) => (
-          React.createElement('div', { key: i, onClick: () => setIdx(i), style: {
-            width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
-            background: i === idx ? COLORS.accent : COLORS.accentSoft,
-            cursor: "pointer", transition: "all 0.3s",
-          }} )
-        ))
-      )
-    )
-  );
+            , React.createElement('button', { onClick: prev, style: {
+                    position: "absolute", left: -16, top: "50%", transform: "translateY(-50%)",
+                    width: 40, height: 40, borderRadius: "50%", border: "none",
+                    background: COLORS.accent, color: "white", fontSize: 18,
+                    cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: `0 4px 20px ${COLORS.accentGlow}`,
+                }}, "‹")
+            , React.createElement('button', { onClick: next, style: {
+                    position: "absolute", right: -16, top: "50%", transform: "translateY(-50%)",
+                    width: 40, height: 40, borderRadius: "50%", border: "none",
+                    background: COLORS.accent, color: "white", fontSize: 18,
+                    cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: `0 4px 20px ${COLORS.accentGlow}`,
+                }}, "›")
+            , React.createElement('div', { style: { display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}
+                , photos.map((_, i) => (
+                    React.createElement('div', { key: i, onClick: () => setIdx(i), style: {
+                            width: i === idx ? 24 : 8, height: 8, borderRadius: 4,
+                            background: i === idx ? COLORS.accent : COLORS.accentSoft,
+                            cursor: "pointer", transition: "all 0.3s",
+                        }} )
+                ))
+            )
+        )
+    );
 }
 
 // ─── PAGE: HOME ───
 
 // ─── NEWSLETTER FORM ───
 function NewsletterForm() {
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName,  setLastName]  = React.useState("");
-  const [email,     setEmail]     = React.useState("");
-  const [linkedin,  setLinkedin]  = React.useState("");
-  const [status,    setStatus]    = React.useState("idle"); // idle | loading | success | error
+    const [firstName, setFirstName] = React.useState("");
+    const [lastName,  setLastName]  = React.useState("");
+    const [email,     setEmail]     = React.useState("");
+    const [company,  setCompany]  = React.useState("");
+    const [status,    setStatus]    = React.useState("idle");
 
-  const inputStyle = {
-    width: "100%", padding: "13px 15px", borderRadius: 10,
-    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.border}`,
-    color: COLORS.white, fontSize: 15, fontFamily: "'DM Sans', sans-serif",
-    outline: "none", transition: "border 0.25s", boxSizing: "border-box",
-  };
-  const placeholderColor = COLORS.gray;
+    const inputStyle = {
+        width: "100%", padding: "13px 15px", borderRadius: 10,
+        background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.border}`,
+        color: COLORS.white, fontSize: 15, fontFamily: "'DM Sans', sans-serif",
+        outline: "none", transition: "border 0.25s", boxSizing: "border-box",
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email.trim() || !firstName.trim()) return;
-    setStatus("loading");
-    const fd = new FormData();
-    fd.append("fields[email]",      email.trim());
-    fd.append("fields[name]",       (firstName.trim() + " " + lastName.trim()).trim());
-    fd.append("fields[last_name]",  lastName.trim());
-    fd.append("fields[w1_linkedin]", linkedin.trim());
-    fd.append("ml-submit", "1");
-    fd.append("anticsrf", "true");
-    fetch("https://assets.mailerlite.com/jsonp/2251367/forms/94Fs9e/subscribe", {
-      method: "POST", body: fd,
-    })
-    .then(r => r.ok ? r.json() : Promise.reject(r))
-    .then(() => setStatus("success"))
-    .catch(() => setStatus("error"));
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!email.trim() || !firstName.trim()) return;
+        setStatus("loading");
+        const mlWrapper = document.getElementById("ml-form-hidden");
+        if (!mlWrapper) { setStatus("error"); return; }
+        const setVal = (sel, val) => {
+            const el = mlWrapper.querySelector(sel);
+            if (!el) return;
+            const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+            setter.call(el, val);
+            el.dispatchEvent(new Event("input",  { bubbles: true }));
+            el.dispatchEvent(new Event("change", { bubbles: true }));
+        };
+        setVal('input[name="fields[email]"]',       email.trim());
+        setVal('input[name="fields[name]"]',        (firstName.trim() + " " + lastName.trim()).trim());
+        setVal('input[name="fields[last_name]"]',    lastName.trim());
+        setVal('input[name="fields[company]"]',  company.trim());
+        const btn = mlWrapper.querySelector('button[type="submit"]');
+        if (!btn) { setStatus("error"); return; }
+        btn.click();
+        const started = Date.now();
+        const poll = setInterval(() => {
+            const success = mlWrapper.querySelector(".ml-form-successBody, .ml-success");
+            const errEl   = mlWrapper.querySelector(".ml-error");
+            if (success)                           { clearInterval(poll); setStatus("success"); }
+            else if (errEl)                        { clearInterval(poll); setStatus("error");   }
+            else if (Date.now()-started > 12000)   { clearInterval(poll); setStatus("error");   }
+        }, 250);
+    };
 
-  if (status === "success") {
-    return React.createElement('div', { style: {
-      background: "rgba(79,140,255,0.08)", border: `1px solid rgba(79,140,255,0.25)`,
-      borderRadius: 12, padding: "28px 24px", textAlign: "center",
-    }}
-      , React.createElement('div', { style: { fontSize: 28, marginBottom: 10 }}, "✓")
-      , React.createElement('p', { style: { color: COLORS.white, fontWeight: 600, fontSize: 17, marginBottom: 6 }}, "You're in!")
-      , React.createElement('p', { style: { color: COLORS.gray, fontSize: 15 }}, "We'll keep you posted on events and opportunities.")
+    if (status === "success") {
+        return React.createElement("div", { style: {
+                    background: "rgba(79,140,255,0.08)", border: "1px solid rgba(79,140,255,0.25)",
+                    borderRadius: 12, padding: "28px 24px", textAlign: "center",
+                }}
+            , React.createElement("div", { style: { fontSize: 32, marginBottom: 10 }}, "\u2713")
+            , React.createElement("p", { style: { color: COLORS.white, fontWeight: 600, fontSize: 17, marginBottom: 6 }}, "You're in!")
+            , React.createElement("p", { style: { color: COLORS.gray, fontSize: 15 }}, "We'll keep you posted on events and opportunities.")
+        );
+    }
+
+    return React.createElement(React.Fragment, null
+        , React.createElement("div", { id: "ml-form-hidden", style: {
+                    position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden",
+                }}
+            , React.createElement("div", { dangerouslySetInnerHTML: { __html: '<div class="ml-embedded" data-form="94Fs9e"></div>' } })
+        )
+        , React.createElement("form", { onSubmit: handleSubmit, style: { width: "100%", maxWidth: 520, margin: "0 auto" }}
+            , React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
+                , React.createElement("input", { type: "text", placeholder: "First name", required: true,
+                    value: firstName, onChange: e => setFirstName(e.target.value), style: inputStyle })
+                , React.createElement("input", { type: "text", placeholder: "Last name",
+                    value: lastName, onChange: e => setLastName(e.target.value), style: inputStyle })
+            )
+            , React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
+                , React.createElement("input", { type: "email", placeholder: "Email address", required: true,
+                    value: email, onChange: e => setEmail(e.target.value), style: inputStyle })
+                , React.createElement("input", { type: "text", placeholder: "LinkedIn profile URL",
+                    value: company, onChange: e => setCompany(e.target.value), style: inputStyle })
+            )
+            , React.createElement("button", { type: "submit", disabled: status === "loading",
+                    style: {
+                        width: "100%", padding: "14px 36px", borderRadius: 10,
+                        background: status === "loading" ? COLORS.accentSoft : "linear-gradient(135deg, #4f8cff 0%, #2d6fe8 100%)",
+                        border: "none", color: "#fff", fontSize: 15, fontWeight: 600,
+                        fontFamily: "'DM Sans', sans-serif",
+                        cursor: status === "loading" ? "not-allowed" : "pointer",
+                        letterSpacing: "0.02em", transition: "opacity 0.2s, transform 0.15s",
+                    }}
+                , status === "loading" ? "Subscribing..." : "Subscribe"
+            )
+            , status === "error" && React.createElement("p", {
+                style: { color: "#f87171", fontSize: 13, marginTop: 10, textAlign: "center" }},
+            "Something went wrong \u2014 please try again.")
+        )
     );
-  }
-
-  return React.createElement('form', { onSubmit: handleSubmit, style: { width: "100%", maxWidth: 520, margin: "0 auto" }}
-    /* Row 1: First name / Last name */
-    , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
-      , React.createElement('input', { type: "text", placeholder: "First name", required: true,
-          value: firstName, onChange: e => setFirstName(e.target.value),
-          style: inputStyle })
-      , React.createElement('input', { type: "text", placeholder: "Last name",
-          value: lastName, onChange: e => setLastName(e.target.value),
-          style: inputStyle })
-    )
-    /* Row 2: Email / LinkedIn */
-    , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}
-      , React.createElement('input', { type: "email", placeholder: "Email address", required: true,
-          value: email, onChange: e => setEmail(e.target.value),
-          style: inputStyle })
-      , React.createElement('input', { type: "text", placeholder: "LinkedIn profile URL",
-          value: linkedin, onChange: e => setLinkedin(e.target.value),
-          style: inputStyle })
-    )
-    /* Row 3: Subscribe button */
-    , React.createElement('button', { type: "submit", disabled: status === "loading",
-        style: {
-          width: "100%", padding: "14px 36px", borderRadius: 10,
-          background: status === "loading" ? COLORS.accentSoft : "linear-gradient(135deg, #4f8cff 0%, #2d6fe8 100%)",
-          border: "none", color: "#fff",
-          fontSize: 15, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
-          cursor: status === "loading" ? "not-allowed" : "pointer",
-          letterSpacing: "0.02em", transition: "opacity 0.2s, transform 0.15s",
-        }}
-      , status === "loading" ? "Subscribing…" : "Subscribe"
-    )
-    , status === "error" && React.createElement('p', { style: { color: "#f87171", fontSize: 13, marginTop: 10, textAlign: "center" }},
-        "Something went wrong — please try again.")
-  );
 }
 
 function HomePage({ setPage }) {
-  const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-  return (
-    React.createElement('div', {__self: this}
-      /* HERO - Super Teaser */
-      , React.createElement('section', { style: {
-        minHeight: "100vh", display: "flex", flexDirection: "column",
-        justifyContent: "center", padding: "140px 0 160px",
-        position: "relative", overflow: "hidden",
-      }}
-        /* Photos — right side, 55% wide (bleeds 15% into text area) */
-        , React.createElement('div', { style: {
-          position: "absolute", top: 0, right: 0, bottom: 0,
-          width: "55%", display: "flex", flexDirection: "column", gap: 12, padding: "100px 0 60px",
-          zIndex: 0,
-        }}
-          , React.createElement('div', { style: { flex: "0 0 auto", flexBasis: "52%", borderRadius: "20px 0 0 20px", overflow: "hidden", boxShadow: "0 24px 80px rgba(0,0,0,0.6)" }}
-            , React.createElement('img', { src: PHOTO_STANFORD_GROUP, alt: "Raisable community" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }} )
-          )
-          , React.createElement('div', { style: { flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}
-            , React.createElement('div', { style: { borderRadius: "16px 0 0 16px", overflow: "hidden", boxShadow: "0 16px 50px rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.12)" }}
-              , React.createElement('img', { src: PHOTO_STANFORD, alt: "Stanford bootcamp" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(1.1)" }} )
-            )
-            , React.createElement('div', { style: { overflow: "hidden", boxShadow: "0 16px 50px rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.12)" }}
-              , React.createElement('img', { src: PHOTO_PLUGPLAY, alt: "Plug and Play"  , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(1.1)" }} )
-            )
-          )
-          /* Lighter gradient — photos bleed into text area */
-          , React.createElement('div', { style: {
-            position: "absolute", inset: 0,
-            background: "linear-gradient(90deg, rgba(10,14,23,0.95) 0%, rgba(10,14,23,0.5) 22%, rgba(10,14,23,0.1) 50%, transparent 100%)",
-          }} )
-        )
-
-        /* Bottom fade into next section */
-        , React.createElement('div', { style: {
-          position: "absolute", bottom: 0, left: 0, right: 0, height: 180,
-          background: "linear-gradient(0deg, rgba(10,14,23,1) 0%, transparent 100%)",
-          zIndex: 0,
-        }} )
-
-        /* Subtle top gradient */
-        , React.createElement('div', { style: {
-          position: "absolute", inset: 0,
-          background: "linear-gradient(180deg, rgba(10,14,23,0.5) 0%, transparent 25%)",
-          zIndex: 0,
-        }} )
-
-        /* Text — 60% wide so it overlaps photos */
-        , React.createElement('div', { style: { width: "min(60%, 100%)", maxWidth: "100%", padding: "0 clamp(20px, 5vw, 80px)", position: "relative", zIndex: 1 }}
-          , React.createElement('div', {__self: this}
-            , React.createElement('h1', { className: "anim-up anim-up-d1" , style: {
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(25px, 3.9vw, 54px)", fontWeight: 800,
-              lineHeight: 1.15, letterSpacing: "-0.03em",
-            }}, "Your Gateway to"
-                , React.createElement('br', {__self: this} ), "Silicon Valley's" , " "
-              , React.createElement('span', { style: {
-                background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.gold})`,
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}, "Innovation,", React.createElement('br', {__self: this} ), "Capital and People"  )
-            )
-
-            , React.createElement('p', { className: "anim-up anim-up-d2" , style: {
-              fontSize: "clamp(13px, 1.5vw, 16px)", color: COLORS.grayLight,
-              maxWidth: 520, marginTop: 28, lineHeight: 1.7,
-            }}, "We help global entrepreneurs grow faster through Silicon Valley's proven strategies, expert network, capital, and immersive experiences."
-
-
-            )
-
-            , React.createElement('div', { className: "anim-up anim-up-d3" , style: { display: "flex", gap: 16, marginTop: 40, flexWrap: "wrap" }}
-              , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
-                style: {
-                  background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
-                  color: "white",
-                  boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
-                }}, "Apply")
-            )
-          )
-        )
-      )
-
-      /* STATS + PHOTO — combined */
-      , React.createElement('section', { style: { padding: "80px clamp(20px, 5vw, 80px) 40px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", display: "flex", gap: "clamp(16px, 2.5vw, 32px)", alignItems: "stretch", flexWrap: "wrap" }}
-          /* Photo left */
-          , React.createElement('div', { style: { flex: "0 0 auto", width: "clamp(240px, 32%, 420px)", minWidth: "min(100%, 300px)", borderRadius: 20, overflow: "hidden", boxShadow: "0 16px 60px rgba(0,0,0,0.4)", border: `1px solid rgba(255,255,255,0.07)` }}
-            , React.createElement('img', { src: PHOTO_COMMUNITY, alt: "Raisable community" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 300 }} )
-          )
-          /* Stats right */
-          , React.createElement('div', { style: {
-            flex: 1,
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24,
-            padding: "clamp(20px, 4vw, 56px) clamp(16px, 3vw, 40px)", borderRadius: 20,
-            background: `linear-gradient(135deg, ${COLORS.bgCard}, ${COLORS.bg})`,
-            border: `1px solid ${COLORS.border}`,
-            alignContent: "center",
-          }}
-            , React.createElement(StatCounter, { value: "200", suffix: "+", label: "Entrepreneurs", sublabel: "In Our Community in Silicon Valley"     } )
-            , React.createElement(StatCounter, { value: "50", suffix: "+", label: "Events", sublabel: "Hosted in Silicon Valley and online"     } )
-            , React.createElement(StatCounter, { value: "50", suffix: "+", label: "VC funds" , sublabel: "With $1B+ AUM in our network"     } )
-            , React.createElement(StatCounter, { value: "100", prefix: "$", suffix: "m+", label: "Raised", sublabel: "Collectively across our mentors community"    } )
-          )
-        )
-      )
-
-      /* WHAT ENTREPRENEURS RECEIVE */
-      , React.createElement('section', { style: { padding: "60px clamp(20px, 5vw, 80px) 40px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
-            , React.createElement('h2', { style: {
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(28px, 4vw, 46px)", fontWeight: 700,
-              lineHeight: 1.15, letterSpacing: "-0.02em",
-            }}, "What Entrepreneurs Receive with US"    )
-          )
-          , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 20, alignItems: "stretch",
-          }}
-            , [
-              { color: COLORS.accent, title: "Fundraising support",
-                desc: "Investor-ready deck, pitch, and data room, calibrated for the Valley. Warm intros to VCs, accelerators, and partners." },
-              { color: COLORS.gold, title: "US Traction",
-                desc: "US GTM strategy, customer conversations, pilots, and paid clients." },
-            ].map((item, i) => (
-              React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
-                , React.createElement(Card, { style: { textAlign: "center", padding: "32px 24px", flex: 1 }}
-                  , React.createElement('h3', { style: {
-                    fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 700,
-                    color: item.color, marginBottom: 10,
-                  }}, item.title)
-                  , React.createElement('p', { style: { fontSize: 14, color: COLORS.gray, lineHeight: 1.7 }}, item.desc)
+    return (
+        React.createElement('div', {__self: this}
+            /* HERO - Super Teaser */
+            , React.createElement('section', { style: {
+                        minHeight: "100vh", display: "flex", flexDirection: "column",
+                        justifyContent: "center", padding: "140px 0 160px",
+                        position: "relative", overflow: "hidden",
+                    }}
+                /* Photos — right side, 55% wide (bleeds 15% into text area) */
+                , React.createElement('div', { style: {
+                            position: "absolute", top: 0, right: 0, bottom: 0,
+                            width: "55%", display: "flex", flexDirection: "column", gap: 12, padding: "100px 0 60px",
+                            zIndex: 0,
+                        }}
+                    , React.createElement('div', { style: { flex: "0 0 auto", flexBasis: "52%", borderRadius: "20px 0 0 20px", overflow: "hidden", boxShadow: "0 24px 80px rgba(0,0,0,0.6)" }}
+                        , React.createElement('img', { src: PHOTO_STANFORD_GROUP, alt: "Raisable community" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }} )
+                    )
+                    , React.createElement('div', { style: { flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}
+                        , React.createElement('div', { style: { borderRadius: "16px 0 0 16px", overflow: "hidden", boxShadow: "0 16px 50px rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.12)" }}
+                            , React.createElement('img', { src: PHOTO_STANFORD, alt: "Stanford bootcamp" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(1.1)" }} )
+                        )
+                        , React.createElement('div', { style: { overflow: "hidden", boxShadow: "0 16px 50px rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.12)" }}
+                            , React.createElement('img', { src: PHOTO_PLUGPLAY, alt: "Plug and Play"  , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(1.1)" }} )
+                        )
+                    )
+                    /* Lighter gradient — photos bleed into text area */
+                    , React.createElement('div', { style: {
+                            position: "absolute", inset: 0,
+                            background: "linear-gradient(90deg, rgba(10,14,23,0.95) 0%, rgba(10,14,23,0.5) 22%, rgba(10,14,23,0.1) 50%, transparent 100%)",
+                        }} )
                 )
-              )
-            ))
-          )
-        )
-      )
 
-      /* WE PROVIDE */
-      , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 80px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement(SectionHead, { title: "We provide"  } )
-          , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, alignItems: "stretch" }}
-            , [
-              { color: COLORS.accent, title: "Expert Sessions",
-                desc: "Structured online meetups with Silicon Valley founders, VCs, and operators." },
-              { color: COLORS.gold, title: "Valley Bootcamps",
-                desc: "Immersive programs with closed-door VC sessions, visits to tech companies, and deep ecosystem immersion." },
-              { color: "#7dd3a8", title: "Capital",
-                desc: "We back the best founders and bring them in front of corporate VCs, strategic partners, and distribution-driven investors." },
-              { color: "#e07be0", title: "Community",
-                desc: "A highly curated global network of entrepreneurs who support, challenge, and open doors for each other around the world." },
-            ].map((item, i) => (
-              React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
-                , React.createElement(Card, { style: { textAlign: "center", padding: "32px 24px", flex: 1 }}
-                  , React.createElement('h3', { style: {
-                    fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 700,
-                    color: item.color, marginBottom: 10,
-                  }}, item.title)
-                  , React.createElement('p', { style: { fontSize: 14, color: COLORS.gray, lineHeight: 1.7 }}, item.desc)
+                /* Bottom fade into next section */
+                , React.createElement('div', { style: {
+                        position: "absolute", bottom: 0, left: 0, right: 0, height: 180,
+                        background: "linear-gradient(0deg, rgba(10,14,23,1) 0%, transparent 100%)",
+                        zIndex: 0,
+                    }} )
+
+                /* Subtle top gradient */
+                , React.createElement('div', { style: {
+                        position: "absolute", inset: 0,
+                        background: "linear-gradient(180deg, rgba(10,14,23,0.5) 0%, transparent 25%)",
+                        zIndex: 0,
+                    }} )
+
+                /* Text — 60% wide so it overlaps photos */
+                , React.createElement('div', { style: { width: "min(60%, 100%)", maxWidth: "100%", padding: "0 clamp(20px, 5vw, 80px)", position: "relative", zIndex: 1 }}
+                    , React.createElement('div', {__self: this}
+                        , React.createElement('h1', { className: "anim-up anim-up-d1" , style: {
+                                    fontFamily: "'Playfair Display', serif",
+                                    fontSize: "clamp(25px, 3.9vw, 54px)", fontWeight: 800,
+                                    lineHeight: 1.15, letterSpacing: "-0.03em",
+                                }}, "Your Gateway to"
+                            , React.createElement('br', {__self: this} ), "Silicon Valley's" , " "
+                            , React.createElement('span', { style: {
+                                    background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.gold})`,
+                                    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                                }}, "Innovation,", React.createElement('br', {__self: this} ), "Capital and People"  )
+                        )
+
+                        , React.createElement('p', { className: "anim-up anim-up-d2" , style: {
+                                fontSize: "clamp(13px, 1.5vw, 16px)", color: COLORS.grayLight,
+                                maxWidth: 520, marginTop: 28, lineHeight: 1.7,
+                            }}, "We help global entrepreneurs grow faster through Silicon Valley's proven strategies, expert network, capital, and immersive experiences."
+
+
+                        )
+
+                        , React.createElement('div', { className: "anim-up anim-up-d3" , style: { display: "flex", gap: 16, marginTop: 40, flexWrap: "wrap" }}
+                            , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
+                                style: {
+                                    background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
+                                    color: "white",
+                                    boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
+                                }}, "Apply")
+                        )
+                    )
                 )
-              )
-            ))
-          )
-        )
-      )
-
-
-      /* BOOTCAMPS CAROUSEL */
-      , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 0px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement(BootcampCarousel, {__self: this} )
-        )
-      )
-
-      /* FEEDBACKS */
-      , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 60px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement(SectionHead, { title: "Feedbacks"} )
-          , React.createElement(FeedbackCarousel, {__self: this} )
-        )
-      )
-
-      /* CTA */
-      , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 60px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", textAlign: "center" }}
-          , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
-            style: {
-              background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
-              color: "white",
-              boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
-              padding: "18px 48px",
-              fontSize: 18,
-            }}, "Apply"  )
-        )
-      )
-
-      /* OUR VC NETWORK */
-      , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 80px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement('div', { className: "anim-up", style: {
-            padding: "clamp(40px, 5vw, 60px)", borderRadius: 24,
-            background: "rgba(0,0,0,0.4)", border: `1px solid ${COLORS.borderLight}`,
-          }}
-            , React.createElement('h2', { style: {
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
-                lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
-              }}, "Some of the VC Funds in our circle"       )
-            , React.createElement(VCNetworkGrid, {__self: this} )
-          )
-
-          /* Newsletter Subscribe */
-          , React.createElement('div', { className: "anim-up", style: {
-            background: COLORS.bgCard,
-            border: `1px solid ${COLORS.border}`,
-            borderRadius: 16,
-            padding: "clamp(40px, 5vw, 64px) clamp(24px, 6vw, 80px)",
-            marginTop: 60, marginBottom: 20,
-            display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
-          }}
-            , React.createElement('div', { style: {
-                fontSize: 12, fontWeight: 600, textTransform: "uppercase",
-                letterSpacing: "0.15em", color: COLORS.accent, marginBottom: 14,
-              }}, "Stay Connected")
-            , React.createElement('h2', { style: {
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
-                lineHeight: 1.15, letterSpacing: "-0.02em",
-                color: COLORS.white, marginBottom: 14,
-              }}, "Get Updates from Raisable")
-            , React.createElement('p', { style: {
-                fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
-                maxWidth: 460, marginBottom: 32,
-              }}, "Get updates on events, programs, and opportunities — straight to your inbox.")
-            , React.createElement(NewsletterForm, null)
-          )
-        )
-      )
-
-      /* WHO ARE YOU MODAL */
-      , showModal && (
-        React.createElement('div', { onClick: () => setShowModal(false), style: {
-          position: "fixed", inset: 0, zIndex: 2000,
-          background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          animation: "fadeIn 0.25s ease",
-        }}
-          , React.createElement('div', { onClick: e => e.stopPropagation(), style: {
-            background: COLORS.bgCard, borderRadius: 24,
-            border: `1px solid ${COLORS.border}`,
-            padding: "clamp(32px, 5vw, 52px)",
-            maxWidth: 460, width: "90%", textAlign: "center",
-            position: "relative",
-            boxShadow: `0 20px 60px rgba(0,0,0,0.5)`,
-            animation: "fadeUp 0.35s ease",
-          }}
-            , React.createElement('button', { onClick: () => setShowModal(false), style: {
-              position: "absolute", top: 16, right: 16,
-              background: "none", border: "none", color: COLORS.gray,
-              fontSize: 22, cursor: "pointer", lineHeight: 1,
-            }}, "✕")
-
-            , React.createElement('div', { style: {
-              width: 56, height: 56, borderRadius: "50%", margin: "0 auto 20px",
-              background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.gold}15)`,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 26,
-            }}, "🤔")
-
-            , React.createElement('h3', { style: {
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 700,
-              marginBottom: 10,
-            }}, "Who are you?"  )
-            , React.createElement('p', { style: { color: COLORS.gray, fontSize: 14, marginBottom: 32, lineHeight: 1.6 }}, "Choose the option that best describes you so we can direct you to the right application."
-
             )
 
-            , React.createElement('div', { style: { display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}
-              , React.createElement('a', { href: "https://forms.gle/4YVBn3ZSTS1xXESk9", target: "_blank", rel: "noopener noreferrer" ,
-                style: {
-                  flex: 1, minWidth: 160, padding: "18px 24px", borderRadius: 14,
-                  border: `1px solid ${COLORS.accent}40`, background: `${COLORS.accent}10`,
-                  cursor: "pointer", transition: "all 0.3s", textDecoration: "none",
-                  display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
-                },
-                onMouseEnter: e => { e.currentTarget.style.background = `${COLORS.accent}20`; e.currentTarget.style.borderColor = COLORS.accent; },
-                onMouseLeave: e => { e.currentTarget.style.background = `${COLORS.accent}10`; e.currentTarget.style.borderColor = `${COLORS.accent}40`; }}
-
-                , React.createElement('span', { style: { fontSize: 28 }}, "🚀")
-                , React.createElement('span', { style: { fontSize: 16, fontWeight: 700, color: COLORS.white }}, "Startup")
-                , React.createElement('span', { style: { fontSize: 11, color: COLORS.gray }}, "I'm building a company"   )
-              )
-
-              , React.createElement('a', { href: "https://forms.gle/4eDacSsAx1KvB5GF7", target: "_blank", rel: "noopener noreferrer" ,
-                style: {
-                  flex: 1, minWidth: 160, padding: "18px 24px", borderRadius: 14,
-                  border: `1px solid ${COLORS.gold}40`, background: `${COLORS.gold}10`,
-                  cursor: "pointer", transition: "all 0.3s", textDecoration: "none",
-                  display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
-                },
-                onMouseEnter: e => { e.currentTarget.style.background = `${COLORS.gold}20`; e.currentTarget.style.borderColor = COLORS.gold; },
-                onMouseLeave: e => { e.currentTarget.style.background = `${COLORS.gold}10`; e.currentTarget.style.borderColor = `${COLORS.gold}40`; }}
-
-                , React.createElement('span', { style: { fontSize: 28 }}, "💡")
-                , React.createElement('span', { style: { fontSize: 16, fontWeight: 700, color: COLORS.white }}, "Entrepreneur")
-                , React.createElement('span', { style: { fontSize: 11, color: COLORS.gray }}, "I'm exploring ventures"  )
-              )
+            /* STATS + PHOTO — combined */
+            , React.createElement('section', { style: { padding: "80px clamp(20px, 5vw, 80px) 40px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", display: "flex", gap: "clamp(16px, 2.5vw, 32px)", alignItems: "stretch", flexWrap: "wrap" }}
+                    /* Photo left */
+                    , React.createElement('div', { style: { flex: "0 0 auto", width: "clamp(240px, 32%, 420px)", minWidth: "min(100%, 300px)", borderRadius: 20, overflow: "hidden", boxShadow: "0 16px 60px rgba(0,0,0,0.4)", border: `1px solid rgba(255,255,255,0.07)` }}
+                        , React.createElement('img', { src: PHOTO_COMMUNITY, alt: "Raisable community" , style: { width: "100%", height: "100%", objectFit: "cover", display: "block", minHeight: 300 }} )
+                    )
+                    /* Stats right */
+                    , React.createElement('div', { style: {
+                                flex: 1,
+                                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24,
+                                padding: "clamp(20px, 4vw, 56px) clamp(16px, 3vw, 40px)", borderRadius: 20,
+                                background: `linear-gradient(135deg, ${COLORS.bgCard}, ${COLORS.bg})`,
+                                border: `1px solid ${COLORS.border}`,
+                                alignContent: "center",
+                            }}
+                        , React.createElement(StatCounter, { value: "200", suffix: "+", label: "Entrepreneurs", sublabel: "In Our Community in Silicon Valley"     } )
+                        , React.createElement(StatCounter, { value: "50", suffix: "+", label: "Events", sublabel: "Hosted in Silicon Valley and online"     } )
+                        , React.createElement(StatCounter, { value: "50", suffix: "+", label: "VC funds" , sublabel: "With $1B+ AUM in our network"     } )
+                        , React.createElement(StatCounter, { value: "100", prefix: "$", suffix: "m+", label: "Raised", sublabel: "Collectively across our mentors community"    } )
+                    )
+                )
             )
-          )
+
+            /* WHAT ENTREPRENEURS RECEIVE */
+            , React.createElement('section', { style: { padding: "60px clamp(20px, 5vw, 80px) 40px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
+                        , React.createElement('h2', { style: {
+                                fontFamily: "'Playfair Display', serif",
+                                fontSize: "clamp(28px, 4vw, 46px)", fontWeight: 700,
+                                lineHeight: 1.15, letterSpacing: "-0.02em",
+                            }}, "What Entrepreneurs Receive with US"    )
+                    )
+                    , React.createElement('div', { style: {
+                                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                                gap: 20, alignItems: "stretch",
+                            }}
+                        , [
+                            { color: COLORS.accent, title: "Fundraising support",
+                                desc: "Investor-ready deck, pitch, and data room, calibrated for the Valley. Warm intros to VCs, accelerators, and partners." },
+                            { color: COLORS.gold, title: "US Traction",
+                                desc: "US GTM strategy, customer conversations, pilots, and paid clients." },
+                        ].map((item, i) => (
+                            React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
+                                , React.createElement(Card, { style: { textAlign: "center", padding: "32px 24px", flex: 1 }}
+                                    , React.createElement('h3', { style: {
+                                            fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 700,
+                                            color: item.color, marginBottom: 10,
+                                        }}, item.title)
+                                    , React.createElement('p', { style: { fontSize: 14, color: COLORS.gray, lineHeight: 1.7 }}, item.desc)
+                                )
+                            )
+                        ))
+                    )
+                )
+            )
+
+            /* WE PROVIDE */
+            , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 80px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement(SectionHead, { title: "We provide"  } )
+                    , React.createElement('div', { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, alignItems: "stretch" }}
+                        , [
+                            { color: COLORS.accent, title: "Expert Sessions",
+                                desc: "Structured online meetups with Silicon Valley founders, VCs, and operators." },
+                            { color: COLORS.gold, title: "Valley Bootcamps",
+                                desc: "Immersive programs with closed-door VC sessions, visits to tech companies, and deep ecosystem immersion." },
+                            { color: "#7dd3a8", title: "Capital",
+                                desc: "We back the best founders and bring them in front of corporate VCs, strategic partners, and distribution-driven investors." },
+                            { color: "#e07be0", title: "Community",
+                                desc: "A highly curated global network of entrepreneurs who support, challenge, and open doors for each other around the world." },
+                        ].map((item, i) => (
+                            React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
+                                , React.createElement(Card, { style: { textAlign: "center", padding: "32px 24px", flex: 1 }}
+                                    , React.createElement('h3', { style: {
+                                            fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 700,
+                                            color: item.color, marginBottom: 10,
+                                        }}, item.title)
+                                    , React.createElement('p', { style: { fontSize: 14, color: COLORS.gray, lineHeight: 1.7 }}, item.desc)
+                                )
+                            )
+                        ))
+                    )
+                )
+            )
+
+
+            /* BOOTCAMPS CAROUSEL */
+            , React.createElement('section', { style: { padding: "20px clamp(20px, 5vw, 80px) 0px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement(BootcampCarousel, {__self: this} )
+                )
+            )
+
+            /* FEEDBACKS */
+            , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 60px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement(SectionHead, { title: "Feedbacks"} )
+                    , React.createElement(FeedbackCarousel, {__self: this} )
+                )
+            )
+
+            /* CTA */
+            , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 60px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto", textAlign: "center" }}
+                    , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
+                        style: {
+                            background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
+                            color: "white",
+                            boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
+                            padding: "18px 48px",
+                            fontSize: 18,
+                        }}, "Apply"  )
+                )
+            )
+
+            /* OUR VC NETWORK */
+            , React.createElement('section', { style: { padding: "40px clamp(20px, 5vw, 80px) 80px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement('div', { className: "anim-up", style: {
+                                padding: "clamp(40px, 5vw, 60px)", borderRadius: 24,
+                                background: "rgba(0,0,0,0.4)", border: `1px solid ${COLORS.borderLight}`,
+                            }}
+                        , React.createElement('h2', { style: {
+                                fontFamily: "'Playfair Display', serif",
+                                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
+                                lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
+                            }}, "Some of the VC Funds in our circle"       )
+                        , React.createElement(VCNetworkGrid, {__self: this} )
+                    )
+
+
+                    /* Newsletter Subscribe */
+                    , React.createElement('div', { id: "subscribe", className: "anim-up", style: {
+                                background: COLORS.bgCard,
+                                border: `1px solid ${COLORS.border}`,
+                                borderRadius: 16,
+                                padding: "clamp(40px, 5vw, 64px) clamp(24px, 6vw, 80px)",
+                                marginTop: 60, marginBottom: 20,
+                                display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+                            }}
+                        , React.createElement('div', { style: {
+                                fontSize: 12, fontWeight: 600, textTransform: "uppercase",
+                                letterSpacing: "0.15em", color: COLORS.accent, marginBottom: 14,
+                            }}, "Stay Connected")
+                        , React.createElement('h2', { style: {
+                                fontFamily: "'Playfair Display', serif",
+                                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
+                                lineHeight: 1.15, letterSpacing: "-0.02em",
+                                color: COLORS.white, marginBottom: 14,
+                            }}, "Get Updates from Raisable")
+                        , React.createElement('p', { style: {
+                                fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
+                                maxWidth: 460, marginBottom: 32,
+                            }}, "Get updates on events, programs, and opportunities \u2014 straight to your inbox.")
+                        , React.createElement(NewsletterForm, null)
+                    )
+                )
+            )
+
+            /* WHO ARE YOU MODAL */
+            , showModal && (
+            React.createElement('div', { onClick: () => setShowModal(false), style: {
+                        position: "fixed", inset: 0, zIndex: 2000,
+                        background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        animation: "fadeIn 0.25s ease",
+                    }}
+                , React.createElement('div', { onClick: e => e.stopPropagation(), style: {
+                            background: COLORS.bgCard, borderRadius: 24,
+                            border: `1px solid ${COLORS.border}`,
+                            padding: "clamp(32px, 5vw, 52px)",
+                            maxWidth: 460, width: "90%", textAlign: "center",
+                            position: "relative",
+                            boxShadow: `0 20px 60px rgba(0,0,0,0.5)`,
+                            animation: "fadeUp 0.35s ease",
+                        }}
+                    , React.createElement('button', { onClick: () => setShowModal(false), style: {
+                            position: "absolute", top: 16, right: 16,
+                            background: "none", border: "none", color: COLORS.gray,
+                            fontSize: 22, cursor: "pointer", lineHeight: 1,
+                        }}, "✕")
+
+                    , React.createElement('div', { style: {
+                            width: 56, height: 56, borderRadius: "50%", margin: "0 auto 20px",
+                            background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.gold}15)`,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            fontSize: 26,
+                        }}, "🤔")
+
+                    , React.createElement('h3', { style: {
+                            fontFamily: "'Playfair Display', serif",
+                            fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 700,
+                            marginBottom: 10,
+                        }}, "Who are you?"  )
+                    , React.createElement('p', { style: { color: COLORS.gray, fontSize: 14, marginBottom: 32, lineHeight: 1.6 }}, "Choose the option that best describes you so we can direct you to the right application."
+
+                    )
+
+                    , React.createElement('div', { style: { display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}
+                        , React.createElement('a', { href: "https://forms.gle/4YVBn3ZSTS1xXESk9", target: "_blank", rel: "noopener noreferrer" ,
+                                style: {
+                                    flex: 1, minWidth: 160, padding: "18px 24px", borderRadius: 14,
+                                    border: `1px solid ${COLORS.accent}40`, background: `${COLORS.accent}10`,
+                                    cursor: "pointer", transition: "all 0.3s", textDecoration: "none",
+                                    display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
+                                },
+                                onMouseEnter: e => { e.currentTarget.style.background = `${COLORS.accent}20`; e.currentTarget.style.borderColor = COLORS.accent; },
+                                onMouseLeave: e => { e.currentTarget.style.background = `${COLORS.accent}10`; e.currentTarget.style.borderColor = `${COLORS.accent}40`; }}
+
+                            , React.createElement('span', { style: { fontSize: 28 }}, "🚀")
+                            , React.createElement('span', { style: { fontSize: 16, fontWeight: 700, color: COLORS.white }}, "Startup")
+                            , React.createElement('span', { style: { fontSize: 11, color: COLORS.gray }}, "I'm building a company"   )
+                        )
+
+                        , React.createElement('a', { href: "https://forms.gle/4eDacSsAx1KvB5GF7", target: "_blank", rel: "noopener noreferrer" ,
+                                style: {
+                                    flex: 1, minWidth: 160, padding: "18px 24px", borderRadius: 14,
+                                    border: `1px solid ${COLORS.gold}40`, background: `${COLORS.gold}10`,
+                                    cursor: "pointer", transition: "all 0.3s", textDecoration: "none",
+                                    display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
+                                },
+                                onMouseEnter: e => { e.currentTarget.style.background = `${COLORS.gold}20`; e.currentTarget.style.borderColor = COLORS.gold; },
+                                onMouseLeave: e => { e.currentTarget.style.background = `${COLORS.gold}10`; e.currentTarget.style.borderColor = `${COLORS.gold}40`; }}
+
+                            , React.createElement('span', { style: { fontSize: 28 }}, "💡")
+                            , React.createElement('span', { style: { fontSize: 16, fontWeight: 700, color: COLORS.white }}, "Entrepreneur")
+                            , React.createElement('span', { style: { fontSize: 11, color: COLORS.gray }}, "I'm exploring ventures"  )
+                        )
+                    )
+                )
+            )
         )
-      )
-    )
-  );
+        )
+    );
 }
 
 // ─── PAGE: FOR STARTUPS ───
 
 // ___ PAGE: ABOUT ___
 function AboutPage() {
-  return (
-    React.createElement('div', { style: { paddingTop: 100 }}
-      , React.createElement('section', { style: { padding: "60px clamp(20px, 5vw, 80px) 80px" }}
-        , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
-          , React.createElement('div', { className: "anim-up", style: { marginBottom: 48, display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap" }}
-            , React.createElement('div', { style: { flex: 1, minWidth: 280 }}
-              , React.createElement('h2', { style: {
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 700,
-                lineHeight: 1.15,
-              }}, "We don't teach Silicon Valley. We bring you inside."        )
-              , React.createElement('p', { style: {
-                fontSize: 18, color: COLORS.gray, marginTop: 16, lineHeight: 1.7, maxWidth: 900,
-              }}, "Raisable is a Silicon Valley-based platform helping ambitious founders and leaders move from the outside in — by giving them real access to the people, context, and capital that shape venture-scale outcomes."                               )
-            )
-            , React.createElement('div', { style: { flexShrink: 0, paddingTop: 8 }}
-              , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
-                style: {
-                  background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
-                  color: "white",
-                  boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
-                }}, "Apply" )
-            )
-          )
-
-          /* Founder — bio + badges in one row */
-          , React.createElement('div', { className: "anim-up anim-up-d2" , style: { marginBottom: 60 }}
-            , React.createElement(Card, { style: {
-              display: "flex", gap: "clamp(24px, 4vw, 48px)", flexWrap: "wrap", alignItems: "center",
-              padding: "clamp(28px, 4vw, 48px)",
-            }}
-              , React.createElement('img', { src: VASYL_SRC, alt: "Vasyl Dub" , style: {
-                width: 180, height: 180, borderRadius: 20,
-                objectFit: "cover",
-                border: `2px solid ${COLORS.accent}30`,
-                flexShrink: 0,
-              }} )
-              , React.createElement('div', { style: { flex: "1 1 240px", minWidth: 200 }}
-                , React.createElement('h3', { style: {
-                  fontFamily: "'Playfair Display', serif", fontSize: 33, fontWeight: 700, marginBottom: 8,
-                }}, "Vasyl Dub" )
-                , React.createElement('div', { style: { fontSize: 20, color: COLORS.accent, fontWeight: 600, marginBottom: 18 }}, "Founder and CEO"
-
-                )
-                , React.createElement('p', { style: { fontSize: 17, color: COLORS.gray, lineHeight: 1.7 }}, "Serial entrepreneur from Ukraine, based in Silicon Valley since 2019. Works closely with founders on strategy, fundraising, and US market entry."
-
-
-                )
-              )
-              /* Divider */
-              , React.createElement('div', { style: { width: 1, height: 140, background: COLORS.borderLight, flexShrink: 0, alignSelf: "center" }} )
-              /* Badges column */
-              , React.createElement('div', { style: { display: "flex", flexDirection: "column", gap: 18, flexShrink: 0 }}
-                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
-                  , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Mentor")
-                  , [
-                    { src: STANFORD_LOGO, alt: "Stanford University", maxH: 22, maxW: 90 },
-                    { src: ALCHEMIST_LOGO, alt: "Alchemist Accelerator", maxH: 22, maxW: 110 },
-                    { src: TRMNL4_LOGO, alt: "TRMNL4", maxH: 20, maxW: 80 },
-                  ].map((org, i) => (
-                    React.createElement('div', { key: i, style: {
-                      padding: "5px 12px", borderRadius: 8,
-                      background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
-                      display: "flex", alignItems: "center",
-                    }}
-                      , React.createElement('img', { src: org.src, alt: org.alt, style: { maxHeight: org.maxH, maxWidth: org.maxW, objectFit: "contain" }} )
-                    )
-                  ))
-                )
-                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
-                  , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Venture Partner" )
-                  , React.createElement('a', { href: "https://network.vc/", target: "_blank", rel: "noopener noreferrer" , style: {
-                    padding: "5px 12px", borderRadius: 8,
-                    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
-                    display: "flex", alignItems: "center", textDecoration: "none",
-                  }}
-                    , React.createElement('img', { src: NETWORK_VC_NEW, alt: "Network VC" , style: { maxHeight: 22, maxWidth: 110, objectFit: "contain" }} )
-                  )
-                )
-                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
-                  , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Featured in" )
-                  , React.createElement('a', { href: "https://news.crunchbase.com/startups/silicon-valley-immigrant-founder-critical-steps-dub-alchemist/", target: "_blank", rel: "noopener noreferrer" , style: {
-                    padding: "5px 12px", borderRadius: 8,
-                    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
-                    display: "flex", alignItems: "center", textDecoration: "none",
-                  }}
-                    , React.createElement('img', { src: CRUNCHBASE_LOGO, alt: "Crunchbase News" , style: { maxHeight: 22, maxWidth: 130, objectFit: "contain" }} )
-                  )
-                )
-              )
-            )
-          )
-
-          /* Ambassadors + VC with world map bg */
-          , React.createElement('div', { style: { position: "relative", overflow: "hidden", padding: "20px 0" }}
-            /* Dot-matrix world map background */
-            , React.createElement('svg', { viewBox: "0 0 1000 500"   , preserveAspectRatio: "xMidYMid meet" , style: {
-              position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-              width: "110%", height: "110%", opacity: 0.12, pointerEvents: "none",
-            }}
-              , React.createElement('defs', {__self: this}
-                , React.createElement('radialGradient', { id: "glow"}, React.createElement('stop', { offset: "0%", stopColor: "#4f8cff", stopOpacity: "0.6"}), React.createElement('stop', { offset: "100%", stopColor: "#4f8cff", stopOpacity: "0"}))
-              )
-              /* North America */
-              , [[120,130],[130,120],[140,115],[155,110],[170,108],[185,112],[200,118],[210,125],[215,135],[220,145],[225,155],[218,165],[205,170],[195,172],[180,168],[165,160],[150,148],[135,140],[125,138]].map(([x,y],i)=>React.createElement('circle', { key: "na"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.5"}))
-              , [[140,125],[155,120],[170,118],[185,122],[200,128],[210,135],[215,145],[210,155],[200,162],[185,158],[170,150],[155,140],[145,135]].map(([x,y],i)=>React.createElement('circle', { key: "na2"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.35"}))
-              /* Central/South America */
-              , [[195,180],[200,195],[205,210],[210,225],[215,240],[218,255],[215,270],[210,285],[205,300],[198,315],[190,325],[182,330],[175,320],[172,305],[175,290],[180,275],[185,260],[190,245],[193,230],[195,215]].map(([x,y],i)=>React.createElement('circle', { key: "sa"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
-              /* Europe */
-              , [[440,100],[455,95],[470,92],[485,90],[500,88],[515,90],[530,95],[540,100],[548,108],[552,118],[548,128],[540,135],[530,140],[518,142],[505,140],[495,135],[485,128],[475,120],[465,112],[452,105]].map(([x,y],i)=>React.createElement('circle', { key: "eu"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.5"}))
-              , [[460,105],[475,100],[490,97],[505,95],[520,97],[535,102],[545,110],[548,120],[542,130],[530,135],[515,136],[502,133],[492,125],[482,115],[470,108]].map(([x,y],i)=>React.createElement('circle', { key: "eu2"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.3"}))
-              /* Africa */
-              , [[480,155],[490,165],[498,178],[505,192],[510,208],[512,225],[510,242],[505,258],[498,272],[490,285],[480,295],[470,300],[460,295],[452,285],[448,270],[445,255],[448,240],[452,225],[458,210],[465,195],[472,180],[478,165]].map(([x,y],i)=>React.createElement('circle', { key: "af"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
-              /* Asia */
-              , [[560,95],[580,88],[600,85],[620,82],[640,80],[660,82],[680,88],[700,95],[715,105],[725,118],[730,132],[728,148],[720,162],[708,172],[695,178],[680,180],[665,178],[648,172],[635,165],[625,155],[618,142],[615,128],[618,115],[625,105],[640,95],[660,90],[680,92],[700,100],[715,112],[722,125],[720,140],[712,155],[700,168],[685,175],[668,174],[652,168],[640,158],[632,145],[628,130],[632,118],[640,108]].map(([x,y],i)=>React.createElement('circle', { key: "as"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
-              /* Southeast Asia */
-              , [[735,155],[745,165],[755,175],[760,188],[758,200],[750,210],[740,215],[730,210],[725,200],[728,188],[735,178]].map(([x,y],i)=>React.createElement('circle', { key: "se"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.35"}))
-              /* Australia */
-              , [[780,290],[795,285],[810,282],[825,285],[838,292],[845,302],[842,315],[832,325],[818,330],[802,328],[790,320],[782,308],[780,296]].map(([x,y],i)=>React.createElement('circle', { key: "au"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.4"}))
-              /* Connection lines between cities */
-              , React.createElement('line', { x1: "160", y1: "138", x2: "440", y2: "100", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
-              , React.createElement('line', { x1: "500", y1: "108", x2: "580", y2: "98", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
-              , React.createElement('line', { x1: "560", y1: "98", x2: "650", y2: "155", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
-              /* City markers with pulsing glow */
-              , [
-                { x: 160, y: 138, label: "San Francisco" },
-                { x: 500, y: 108, label: "London" },
-                { x: 470, y: 118, label: "Lisboa" },
-                { x: 575, y: 98, label: "Kyiv" },
-                { x: 650, y: 155, label: "Dubai" },
-                { x: 465, y: 112, label: "Bilbao" },
-                { x: 555, y: 95, label: "Warsaw" },
-              ].map((city, i) => (
-                React.createElement('g', { key: i}
-                  , React.createElement('circle', { cx: city.x, cy: city.y, r: "18", fill: "url(#glow)"})
-                  , React.createElement('circle', { cx: city.x, cy: city.y, r: "5", fill: "#4f8cff", opacity: "0.25"})
-                  , React.createElement('circle', { cx: city.x, cy: city.y, r: "2.5", fill: "#4f8cff", opacity: "0.9"})
-                  , React.createElement('text', { x: city.x, y: city.y - 12, textAnchor: "middle", fill: "#4f8cff", fontSize: "8", fontFamily: "DM Sans, sans-serif"  , fontWeight: "500", opacity: "0.7"}, city.label)
-                )
-              ))
-            )
-
-          , React.createElement(SectionHead, { title: "Our Ambassadors" ,
-            sub: "Meet the people representing Raisable around the world."       } )
-          , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 18, marginBottom: 60,
-          }}
-            , [
-              { name: "Oksana Lymanska", role: "Investment Consultant / Venture Partner / Mentor", location: "Bilbao", url: "https://www.linkedin.com/in/oksana-lymanska-a53237215/", img: OKSANA_IMG },
-              { name: "Alexander Voloshyn", role: "Entrepreneur", location: "Lisboa", url: "https://www.linkedin.com/in/nysholov/", img: VOLOSHYN_IMG },
-              { name: "Igor Ovcharenko", role: "Connecting Talents & Opportunities in Emerging Markets | Angel Investor | VC", location: "Dubai", url: "https://www.linkedin.com/in/ihorovcharenko/", img: IGOR_IMG },
-              { name: "Ihor Vlasov", role: "M&A Fintech & AI | AI Fintech Guru | Interviewer", location: "EU", url: "https://www.linkedin.com/in/ihorvlasov/", img: IHOR_IMG },
-              { name: "Oleksandra Korotkova", role: "Turn Heads Global ✦ PR consultancy for tech businesses ✦ Mentorship for PR experts", location: "London", url: "https://www.linkedin.com/in/oleksandra-korotkova/", img: OLEKSANDRA_IMG },
-            ].map((a, i) => (
-              React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
-                , React.createElement(Card, { style: { padding: "32px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", flex: 1 }}
-                  , React.createElement('img', { src: a.img, alt: a.name, style: {
-                    width: 113, height: 113, minWidth: 113, borderRadius: "50%",
-                    objectFit: "cover", border: `2px solid #7dd3a830`, marginBottom: 16,
-                  }} )
-                  , React.createElement('div', {__self: this}
-                    , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 6 }}
-                      , React.createElement('a', { href: a.url, target: "_blank", rel: "noopener noreferrer" , style: {
-                        fontSize: 20, fontWeight: 700, color: "#7dd3a8",
-                        textDecoration: "underline", textDecorationColor: "#7dd3a850",
-                        textUnderlineOffset: 3,
-                      }}, a.name)
-                      , React.createElement('a', { href: a.url, target: "_blank", rel: "noopener noreferrer" }
-                        , React.createElement('svg', { width: "18", height: "18", viewBox: "0 0 24 24"   , fill: "#7dd3a8", style: { flexShrink: 0 }}
-                          , React.createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"                         })
+    return (
+        React.createElement('div', { style: { paddingTop: 100 }}
+            , React.createElement('section', { style: { padding: "60px clamp(20px, 5vw, 80px) 80px" }}
+                , React.createElement('div', { style: { maxWidth: 1280, margin: "0 auto" }}
+                    , React.createElement('div', { className: "anim-up", style: { marginBottom: 48, display: "flex", alignItems: "flex-start", gap: 40, flexWrap: "wrap" }}
+                        , React.createElement('div', { style: { flex: 1, minWidth: 280 }}
+                            , React.createElement('h2', { style: {
+                                    fontFamily: "'Playfair Display', serif",
+                                    fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 700,
+                                    lineHeight: 1.15,
+                                }}, "We don't teach Silicon Valley. We bring you inside."        )
+                            , React.createElement('p', { style: {
+                                    fontSize: 18, color: COLORS.gray, marginTop: 16, lineHeight: 1.7, maxWidth: 900,
+                                }}, "Raisable is a Silicon Valley-based platform helping ambitious founders and leaders move from the outside in — by giving them real access to the people, context, and capital that shape venture-scale outcomes."                               )
                         )
-                      )
-                    )
-                    , React.createElement('p', { style: { fontSize: 16, color: COLORS.gray, lineHeight: 1.5 }}, a.role)
-                    , React.createElement('p', { style: { fontSize: 15, color: "#7dd3a8", marginTop: 6 }}, "📍 " , a.location)
-                  )
-                )
-              )
-            ))
-          )
-
-          /* VC Network */
-          , React.createElement('div', { className: "anim-up", style: {
-            padding: "clamp(40px, 5vw, 60px)", borderRadius: 24,
-            background: "rgba(0,0,0,0.4)", border: `1px solid ${COLORS.borderLight}`,
-            marginBottom: 60,
-          }}
-            , React.createElement('h2', { style: {
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
-                lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
-              }}, "Some of the VC Funds in our circle"       )
-            , React.createElement(VCNetworkGrid, {__self: this} )
-          )
-          )/* end world map wrapper */
-
-          /* Mentors */
-          , React.createElement('div', { style: { borderTop: `1px solid ${COLORS.borderLight}`, marginTop: 20, paddingTop: 60 }} )
-          , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
-            , React.createElement('h2', { style: {
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 700,
-              lineHeight: 1.15, marginBottom: 12,
-            }}, "Some of Our Esteemed Mentors and Advisors"      )
-            , React.createElement('p', { style: {
-              fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
-            }}, "Our network includes serial entrepreneurs, unicorn co-founders, FAANG operators, and active VCs."           )
-          )
-          , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 16, marginBottom: 20,
-          }}
-            , [
-              { name: "Nitin Pachisia", role: "Founding Partner @Unshackled Ventures (backed 200+ founders)", url: "https://www.linkedin.com/in/npachisia/", li: "npachisia", img: NITIN_IMG },
-              { name: "Andrey Akselrod", role: "2x Unicorn Co-founder, People.ai, Angel Investor", url: "https://www.linkedin.com/in/andreyakselrod/", li: "andreyakselrod", img: ANDREY_IMG },
-              { name: "Eugene Malobrodsky", role: "Managing Partner @One Way Ventures (backed 70+ startups)", url: "https://www.linkedin.com/in/afeugene/", li: "afeugene", img: EUGENE_IMG },
-              { name: "Tim Tesluck", role: "Serial Entrepreneur (1 Exit), ex Tech Investor", url: "https://www.linkedin.com/in/tesluck/", li: "tesluck", img: TIM_IMG },
-              { name: "Jack Levin", role: "Serial Entrepreneur, Early Googler #21, Investor, X1 Labs founder ($300m+)", url: "https://www.linkedin.com/in/yjlevin/", li: "yjlevin" },
-              { name: "Alexei Chemenda", role: "Serial Entrepreneur ($65m+ ARR), Invested in 200+ startups", url: "https://www.linkedin.com/in/alexeichemenda/", li: "alexeichemenda", img: ALEXEI_IMG },
-              { name: "Cyrille Najar", role: "Serial Entrepreneur (raised $6m+), Mentor at Stanford & Berkeley", url: "https://www.linkedin.com/in/cyrillenajjar/", li: "cyrillenajjar", img: CYRILLE_IMG },
-              { name: "Anton Vaisburd", role: "CEO & Co-founder @ datrics.ai (YC W21), GP @SID VP (30+ startups)", url: "https://www.linkedin.com/in/vaisburd", li: "vaisburd", img: ANTON_IMG },
-              { name: "M. Fridshtand", role: "Serial Entrepreneur, Investor, Stanford Executive Program", url: "https://www.linkedin.com/in/mfridshtand/", li: "mfridshtand", img: MICHAEL_IMG },
-              { name: "Vasili Razhnou", role: "Founder and CEO at MedVidi ($26m ARR+ in 2025), Angel Investor", url: "https://www.linkedin.com/in/vasili-razhnou/", li: "vasili-razhnou", img: VASILI_IMG },
-              { name: "Yurii Filipchuk", role: "Serial Entrepreneur ($5m+ raised), Former VC (20+ deals), Community builder", url: "https://www.linkedin.com/in/yfilip/", li: "yfilip", img: YURII_IMG },
-              { name: "Dana Sydorenko", role: "Serial Entrepreneur ($4m raised), Investor, Forbes 30 Under 30", url: "https://www.linkedin.com/in/dana-sydorenko-732a4a1b3/", li: "dana-sydorenko-732a4a1b3", img: DANA_IMG },
-              { name: "Dan Hnatkovskyy", role: "Founder/CEO @Jome ($15m+ raised), Angel Investor", url: "https://www.linkedin.com/in/dan-hnatkovskyy/", li: "dan-hnatkovskyy", img: DAN_IMG },
-              { name: "Vlad Voskresensky", role: "CEO & co-founder @Revenue Grid ($30m+ raised, 1m+ paid users)", url: "https://www.linkedin.com/in/vladvoskr/", li: "vladvoskr", img: VLAD_IMG },
-              { name: "Alexander Soroka", role: "Managing Partner, Network VC (invested into 100+ startups)", url: "https://www.linkedin.com/in/alexandersoroka/", li: "alexandersoroka", img: SOROKA_IMG },
-              { name: "Satish Polisetti", role: "Serial Entrepreneur (exited to Walmart), E-commerce expert, Angel Investor", url: "https://www.linkedin.com/in/polisettisatish/", li: "polisettisatish" },
-            ].map((m, i) => {
-              const photoUrl = m.img || `https://unavatar.io/linkedin/${m.li}?fallback=false`;
-              return (
-              React.createElement('div', { key: i, className: `anim-up anim-up-d${Math.min(i+1, 4)}`}
-                , React.createElement(Card, { style: { padding: "20px 24px", display: "flex", gap: 14, alignItems: "center" }}
-                  , React.createElement(MentorPhoto, { src: photoUrl, name: m.name} )
-                  , React.createElement('div', { style: { flex: 1 }}
-                    , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}
-                      , React.createElement('a', { href: m.url, target: "_blank", rel: "noopener noreferrer" , style: {
-                          fontSize: 15, fontWeight: 700, color: COLORS.accent,
-                          textDecoration: "underline",
-                          textDecorationColor: COLORS.accent + "50",
-                          textUnderlineOffset: 3,
-                        },
-                        onMouseEnter: e => e.target.style.textDecorationColor = COLORS.accent,
-                        onMouseLeave: e => e.target.style.textDecorationColor = COLORS.accent + "50"}
-, m.name)
-                      , React.createElement('a', { href: m.url, target: "_blank", rel: "noopener noreferrer" }
-                        , React.createElement('svg', { width: "16", height: "16", viewBox: "0 0 24 24"   , fill: COLORS.accent,
-                          style: { flexShrink: 0, cursor: "pointer", display: "block" }}
-                          , React.createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"                         })
+                        , React.createElement('div', { style: { flexShrink: 0, paddingTop: 8 }}
+                            , React.createElement(LinkButton, { href: "https://forms.gle/4YVBn3ZSTS1xXESk9",
+                                style: {
+                                    background: `linear-gradient(135deg, ${COLORS.accent}, #6ba3ff)`,
+                                    color: "white",
+                                    boxShadow: `0 4px 30px ${COLORS.accentGlow}`,
+                                }}, "Apply" )
                         )
-                      )
                     )
-                    , React.createElement('p', { style: { fontSize: 12, color: COLORS.gray, lineHeight: 1.5 }}, m.role)
-                  )
-                )
-              )
-              );
-            })
-          )
-          , React.createElement('div', { className: "anim-up", style: { fontSize: 14, color: COLORS.gray, fontStyle: "italic", marginBottom: 60 }}, "And many others…"
 
-          )
+                    /* Founder — bio + badges in one row */
+                    , React.createElement('div', { className: "anim-up anim-up-d2" , style: { marginBottom: 60 }}
+                        , React.createElement(Card, { style: {
+                                    display: "flex", gap: "clamp(24px, 4vw, 48px)", flexWrap: "wrap", alignItems: "center",
+                                    padding: "clamp(28px, 4vw, 48px)",
+                                }}
+                            , React.createElement('img', { src: VASYL_SRC, alt: "Vasyl Dub" , style: {
+                                    width: 180, height: 180, borderRadius: 20,
+                                    objectFit: "cover",
+                                    border: `2px solid ${COLORS.accent}30`,
+                                    flexShrink: 0,
+                                }} )
+                            , React.createElement('div', { style: { flex: "1 1 240px", minWidth: 200 }}
+                                , React.createElement('h3', { style: {
+                                        fontFamily: "'Playfair Display', serif", fontSize: 33, fontWeight: 700, marginBottom: 8,
+                                    }}, "Vasyl Dub" )
+                                , React.createElement('div', { style: { fontSize: 20, color: COLORS.accent, fontWeight: 600, marginBottom: 18 }}, "Founder and CEO"
+
+                                )
+                                , React.createElement('p', { style: { fontSize: 17, color: COLORS.gray, lineHeight: 1.7 }}, "Serial entrepreneur from Ukraine, based in Silicon Valley since 2019. Works closely with founders on strategy, fundraising, and US market entry."
 
 
-          /* YouTube */
-          , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
-            , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}
-              , React.createElement('div', {__self: this}
+                                )
+                            )
+                            /* Divider */
+                            , React.createElement('div', { style: { width: 1, height: 140, background: COLORS.borderLight, flexShrink: 0, alignSelf: "center" }} )
+                            /* Badges column */
+                            , React.createElement('div', { style: { display: "flex", flexDirection: "column", gap: 18, flexShrink: 0 }}
+                                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
+                                    , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Mentor")
+                                    , [
+                                        { src: STANFORD_LOGO, alt: "Stanford University", maxH: 22, maxW: 90 },
+                                        { src: ALCHEMIST_LOGO, alt: "Alchemist Accelerator", maxH: 22, maxW: 110 },
+                                        { src: TRMNL4_LOGO, alt: "TRMNL4", maxH: 20, maxW: 80 },
+                                    ].map((org, i) => (
+                                        React.createElement('div', { key: i, style: {
+                                                    padding: "5px 12px", borderRadius: 8,
+                                                    background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
+                                                    display: "flex", alignItems: "center",
+                                                }}
+                                            , React.createElement('img', { src: org.src, alt: org.alt, style: { maxHeight: org.maxH, maxWidth: org.maxW, objectFit: "contain" }} )
+                                        )
+                                    ))
+                                )
+                                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
+                                    , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Venture Partner" )
+                                    , React.createElement('a', { href: "https://network.vc/", target: "_blank", rel: "noopener noreferrer" , style: {
+                                                padding: "5px 12px", borderRadius: 8,
+                                                background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
+                                                display: "flex", alignItems: "center", textDecoration: "none",
+                                            }}
+                                        , React.createElement('img', { src: NETWORK_VC_NEW, alt: "Network VC" , style: { maxHeight: 22, maxWidth: 110, objectFit: "contain" }} )
+                                    )
+                                )
+                                , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}
+                                    , React.createElement('div', { style: { fontSize: 11, color: COLORS.gray, textTransform: "uppercase", letterSpacing: "0.1em", width: 100 }}, "Featured in" )
+                                    , React.createElement('a', { href: "https://news.crunchbase.com/startups/silicon-valley-immigrant-founder-critical-steps-dub-alchemist/", target: "_blank", rel: "noopener noreferrer" , style: {
+                                                padding: "5px 12px", borderRadius: 8,
+                                                background: "rgba(255,255,255,0.06)", border: `1px solid ${COLORS.borderLight}`,
+                                                display: "flex", alignItems: "center", textDecoration: "none",
+                                            }}
+                                        , React.createElement('img', { src: CRUNCHBASE_LOGO, alt: "Crunchbase News" , style: { maxHeight: 22, maxWidth: 130, objectFit: "contain" }} )
+                                    )
+                                )
+                            )
+                        )
+                    )
 
-                , React.createElement('h2', { style: {
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, lineHeight: 1.15,
-                }}, "Watch us on Youtube"   )
-              )
-              , React.createElement('a', { href: "https://www.youtube.com/@RaisableFounders?sub_confirmation=1", target: "_blank", rel: "noopener noreferrer" , style: {
-                padding: "12px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600,
-                background: "#ff0000", color: "white", textDecoration: "none",
-                display: "inline-flex", alignItems: "center", gap: 8,
-              }}, "▶ Subscribe" )
-            )
-          )
-          , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 20, marginBottom: 80,
-          }}
-            , [
-              { id: "zDQlxNnxDyQ", title: "Raisable Founder Session" },
-              { id: "I1xgPWbXFXQ", title: "Silicon Valley Insights" },
-              { id: "3xIhQyR7Xu8", title: "Startup Masterclass" },
-            ].map((v, i) => (
-              React.createElement('a', { key: i, href: `https://www.youtube.com/watch?v=${v.id}`, target: "_blank", rel: "noopener noreferrer" ,
-                className: `anim-up anim-up-d${i+1}`,
-                style: { textDecoration: "none", color: "inherit" }}
-                , React.createElement(Card, { hover: true, style: { padding: 0, overflow: "hidden" }}
-                  , React.createElement('div', { style: { position: "relative" }}
-                    , React.createElement('img', { src: `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`, alt: v.title,
-                      style: { width: "100%", height: 180, objectFit: "cover", display: "block" }} )
+                    /* Ambassadors + VC with world map bg */
+                    , React.createElement('div', { style: { position: "relative", overflow: "hidden", padding: "20px 0" }}
+                        /* Dot-matrix world map background */
+                        , React.createElement('svg', { viewBox: "0 0 1000 500"   , preserveAspectRatio: "xMidYMid meet" , style: {
+                                    position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+                                    width: "110%", height: "110%", opacity: 0.12, pointerEvents: "none",
+                                }}
+                            , React.createElement('defs', {__self: this}
+                                , React.createElement('radialGradient', { id: "glow"}, React.createElement('stop', { offset: "0%", stopColor: "#4f8cff", stopOpacity: "0.6"}), React.createElement('stop', { offset: "100%", stopColor: "#4f8cff", stopOpacity: "0"}))
+                            )
+                            /* North America */
+                            , [[120,130],[130,120],[140,115],[155,110],[170,108],[185,112],[200,118],[210,125],[215,135],[220,145],[225,155],[218,165],[205,170],[195,172],[180,168],[165,160],[150,148],[135,140],[125,138]].map(([x,y],i)=>React.createElement('circle', { key: "na"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.5"}))
+                            , [[140,125],[155,120],[170,118],[185,122],[200,128],[210,135],[215,145],[210,155],[200,162],[185,158],[170,150],[155,140],[145,135]].map(([x,y],i)=>React.createElement('circle', { key: "na2"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.35"}))
+                            /* Central/South America */
+                            , [[195,180],[200,195],[205,210],[210,225],[215,240],[218,255],[215,270],[210,285],[205,300],[198,315],[190,325],[182,330],[175,320],[172,305],[175,290],[180,275],[185,260],[190,245],[193,230],[195,215]].map(([x,y],i)=>React.createElement('circle', { key: "sa"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
+                            /* Europe */
+                            , [[440,100],[455,95],[470,92],[485,90],[500,88],[515,90],[530,95],[540,100],[548,108],[552,118],[548,128],[540,135],[530,140],[518,142],[505,140],[495,135],[485,128],[475,120],[465,112],[452,105]].map(([x,y],i)=>React.createElement('circle', { key: "eu"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.5"}))
+                            , [[460,105],[475,100],[490,97],[505,95],[520,97],[535,102],[545,110],[548,120],[542,130],[530,135],[515,136],[502,133],[492,125],[482,115],[470,108]].map(([x,y],i)=>React.createElement('circle', { key: "eu2"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.3"}))
+                            /* Africa */
+                            , [[480,155],[490,165],[498,178],[505,192],[510,208],[512,225],[510,242],[505,258],[498,272],[490,285],[480,295],[470,300],[460,295],[452,285],[448,270],[445,255],[448,240],[452,225],[458,210],[465,195],[472,180],[478,165]].map(([x,y],i)=>React.createElement('circle', { key: "af"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
+                            /* Asia */
+                            , [[560,95],[580,88],[600,85],[620,82],[640,80],[660,82],[680,88],[700,95],[715,105],[725,118],[730,132],[728,148],[720,162],[708,172],[695,178],[680,180],[665,178],[648,172],[635,165],[625,155],[618,142],[615,128],[618,115],[625,105],[640,95],[660,90],[680,92],[700,100],[715,112],[722,125],[720,140],[712,155],[700,168],[685,175],[668,174],[652,168],[640,158],[632,145],[628,130],[632,118],[640,108]].map(([x,y],i)=>React.createElement('circle', { key: "as"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.4"}))
+                            /* Southeast Asia */
+                            , [[735,155],[745,165],[755,175],[760,188],[758,200],[750,210],[740,215],[730,210],[725,200],[728,188],[735,178]].map(([x,y],i)=>React.createElement('circle', { key: "se"+i, cx: x, cy: y, r: "2", fill: "#4f8cff", opacity: "0.35"}))
+                            /* Australia */
+                            , [[780,290],[795,285],[810,282],[825,285],[838,292],[845,302],[842,315],[832,325],[818,330],[802,328],[790,320],[782,308],[780,296]].map(([x,y],i)=>React.createElement('circle', { key: "au"+i, cx: x, cy: y, r: "2.5", fill: "#4f8cff", opacity: "0.4"}))
+                            /* Connection lines between cities */
+                            , React.createElement('line', { x1: "160", y1: "138", x2: "440", y2: "100", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
+                            , React.createElement('line', { x1: "500", y1: "108", x2: "580", y2: "98", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
+                            , React.createElement('line', { x1: "560", y1: "98", x2: "650", y2: "155", stroke: "#4f8cff", strokeWidth: "0.5", opacity: "0.15", strokeDasharray: "4,4"})
+                            /* City markers with pulsing glow */
+                            , [
+                                { x: 160, y: 138, label: "San Francisco" },
+                                { x: 500, y: 108, label: "London" },
+                                { x: 470, y: 118, label: "Lisboa" },
+                                { x: 575, y: 98, label: "Kyiv" },
+                                { x: 650, y: 155, label: "Dubai" },
+                                { x: 465, y: 112, label: "Bilbao" },
+                                { x: 555, y: 95, label: "Warsaw" },
+                            ].map((city, i) => (
+                                React.createElement('g', { key: i}
+                                    , React.createElement('circle', { cx: city.x, cy: city.y, r: "18", fill: "url(#glow)"})
+                                    , React.createElement('circle', { cx: city.x, cy: city.y, r: "5", fill: "#4f8cff", opacity: "0.25"})
+                                    , React.createElement('circle', { cx: city.x, cy: city.y, r: "2.5", fill: "#4f8cff", opacity: "0.9"})
+                                    , React.createElement('text', { x: city.x, y: city.y - 12, textAnchor: "middle", fill: "#4f8cff", fontSize: "8", fontFamily: "DM Sans, sans-serif"  , fontWeight: "500", opacity: "0.7"}, city.label)
+                                )
+                            ))
+                        )
+
+                        , React.createElement(SectionHead, { title: "Our Ambassadors" ,
+                            sub: "Meet the people representing Raisable around the world."       } )
+                        , React.createElement('div', { style: {
+                                    display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                                    gap: 18, marginBottom: 60,
+                                }}
+                            , [
+                                { name: "Oksana Lymanska", role: "Investment Consultant / Venture Partner / Mentor", location: "Bilbao", url: "https://www.linkedin.com/in/oksana-lymanska-a53237215/", img: OKSANA_IMG },
+                                { name: "Alexander Voloshyn", role: "Entrepreneur", location: "Lisboa", url: "https://www.linkedin.com/in/nysholov/", img: VOLOSHYN_IMG },
+                                { name: "Igor Ovcharenko", role: "Connecting Talents & Opportunities in Emerging Markets | Angel Investor | VC", location: "Dubai", url: "https://www.linkedin.com/in/ihorovcharenko/", img: IGOR_IMG },
+                                { name: "Ihor Vlasov", role: "M&A Fintech & AI | AI Fintech Guru | Interviewer", location: "EU", url: "https://www.linkedin.com/in/ihorvlasov/", img: IHOR_IMG },
+                                { name: "Oleksandra Korotkova", role: "Turn Heads Global ✦ PR consultancy for tech businesses ✦ Mentorship for PR experts", location: "London", url: "https://www.linkedin.com/in/oleksandra-korotkova/", img: OLEKSANDRA_IMG },
+                            ].map((a, i) => (
+                                React.createElement('div', { key: i, className: `anim-up anim-up-d${i+1}`, style: { display: "flex" }}
+                                    , React.createElement(Card, { style: { padding: "32px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", flex: 1 }}
+                                        , React.createElement('img', { src: a.img, alt: a.name, style: {
+                                                width: 113, height: 113, minWidth: 113, borderRadius: "50%",
+                                                objectFit: "cover", border: `2px solid #7dd3a830`, marginBottom: 16,
+                                            }} )
+                                        , React.createElement('div', {__self: this}
+                                            , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 6 }}
+                                                , React.createElement('a', { href: a.url, target: "_blank", rel: "noopener noreferrer" , style: {
+                                                        fontSize: 20, fontWeight: 700, color: "#7dd3a8",
+                                                        textDecoration: "underline", textDecorationColor: "#7dd3a850",
+                                                        textUnderlineOffset: 3,
+                                                    }}, a.name)
+                                                , React.createElement('a', { href: a.url, target: "_blank", rel: "noopener noreferrer" }
+                                                    , React.createElement('svg', { width: "18", height: "18", viewBox: "0 0 24 24"   , fill: "#7dd3a8", style: { flexShrink: 0 }}
+                                                        , React.createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"                         })
+                                                    )
+                                                )
+                                            )
+                                            , React.createElement('p', { style: { fontSize: 16, color: COLORS.gray, lineHeight: 1.5 }}, a.role)
+                                            , React.createElement('p', { style: { fontSize: 15, color: "#7dd3a8", marginTop: 6 }}, "📍 " , a.location)
+                                        )
+                                    )
+                                )
+                            ))
+                        )
+
+                        /* VC Network */
+                        , React.createElement('div', { className: "anim-up", style: {
+                                    padding: "clamp(40px, 5vw, 60px)", borderRadius: 24,
+                                    background: "rgba(0,0,0,0.4)", border: `1px solid ${COLORS.borderLight}`,
+                                    marginBottom: 60,
+                                }}
+                            , React.createElement('h2', { style: {
+                                    fontFamily: "'Playfair Display', serif",
+                                    fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700,
+                                    lineHeight: 1.15, color: COLORS.accent, marginBottom: 36,
+                                }}, "Some of the VC Funds in our circle"       )
+                            , React.createElement(VCNetworkGrid, {__self: this} )
+                        )
+                    )/* end world map wrapper */
+
+                    /* Mentors */
+                    , React.createElement('div', { style: { borderTop: `1px solid ${COLORS.borderLight}`, marginTop: 20, paddingTop: 60 }} )
+                    , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
+                        , React.createElement('h2', { style: {
+                                fontFamily: "'Playfair Display', serif",
+                                fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 700,
+                                lineHeight: 1.15, marginBottom: 12,
+                            }}, "Some of Our Esteemed Mentors and Advisors"      )
+                        , React.createElement('p', { style: {
+                                fontSize: 15, color: COLORS.gray, lineHeight: 1.7,
+                            }}, "Our network includes serial entrepreneurs, unicorn co-founders, FAANG operators, and active VCs."           )
+                    )
                     , React.createElement('div', { style: {
-                      position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                      background: "rgba(0,0,0,0.3)",
-                    }}
-                      , React.createElement('div', { style: {
-                        width: 56, height: 56, borderRadius: "50%", background: "rgba(255,0,0,0.9)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}
-                        , React.createElement('span', { style: { fontSize: 22, color: "white", marginLeft: 3 }}, "▶")
-                      )
+                                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                                gap: 16, marginBottom: 20,
+                            }}
+                        , [
+                            { name: "Nitin Pachisia", role: "Founding Partner @Unshackled Ventures (backed 200+ founders)", url: "https://www.linkedin.com/in/npachisia/", li: "npachisia", img: NITIN_IMG },
+                            { name: "Andrey Akselrod", role: "2x Unicorn Co-founder, People.ai, Angel Investor", url: "https://www.linkedin.com/in/andreyakselrod/", li: "andreyakselrod", img: ANDREY_IMG },
+                            { name: "Eugene Malobrodsky", role: "Managing Partner @One Way Ventures (backed 70+ startups)", url: "https://www.linkedin.com/in/afeugene/", li: "afeugene", img: EUGENE_IMG },
+                            { name: "Tim Tesluck", role: "Serial Entrepreneur (1 Exit), ex Tech Investor", url: "https://www.linkedin.com/in/tesluck/", li: "tesluck", img: TIM_IMG },
+                            { name: "Jack Levin", role: "Serial Entrepreneur, Early Googler #21, Investor, X1 Labs founder ($300m+)", url: "https://www.linkedin.com/in/yjlevin/", li: "yjlevin" },
+                            { name: "Alexei Chemenda", role: "Serial Entrepreneur ($65m+ ARR), Invested in 200+ startups", url: "https://www.linkedin.com/in/alexeichemenda/", li: "alexeichemenda", img: ALEXEI_IMG },
+                            { name: "Cyrille Najar", role: "Serial Entrepreneur (raised $6m+), Mentor at Stanford & Berkeley", url: "https://www.linkedin.com/in/cyrillenajjar/", li: "cyrillenajjar", img: CYRILLE_IMG },
+                            { name: "Anton Vaisburd", role: "CEO & Co-founder @ datrics.ai (YC W21), GP @SID VP (30+ startups)", url: "https://www.linkedin.com/in/vaisburd", li: "vaisburd", img: ANTON_IMG },
+                            { name: "M. Fridshtand", role: "Serial Entrepreneur, Investor, Stanford Executive Program", url: "https://www.linkedin.com/in/mfridshtand/", li: "mfridshtand", img: MICHAEL_IMG },
+                            { name: "Vasili Razhnou", role: "Founder and CEO at MedVidi ($26m ARR+ in 2025), Angel Investor", url: "https://www.linkedin.com/in/vasili-razhnou/", li: "vasili-razhnou", img: VASILI_IMG },
+                            { name: "Yurii Filipchuk", role: "Serial Entrepreneur ($5m+ raised), Former VC (20+ deals), Community builder", url: "https://www.linkedin.com/in/yfilip/", li: "yfilip", img: YURII_IMG },
+                            { name: "Dana Sydorenko", role: "Serial Entrepreneur ($4m raised), Investor, Forbes 30 Under 30", url: "https://www.linkedin.com/in/dana-sydorenko-732a4a1b3/", li: "dana-sydorenko-732a4a1b3", img: DANA_IMG },
+                            { name: "Dan Hnatkovskyy", role: "Founder/CEO @Jome ($15m+ raised), Angel Investor", url: "https://www.linkedin.com/in/dan-hnatkovskyy/", li: "dan-hnatkovskyy", img: DAN_IMG },
+                            { name: "Vlad Voskresensky", role: "CEO & co-founder @Revenue Grid ($30m+ raised, 1m+ paid users)", url: "https://www.linkedin.com/in/vladvoskr/", li: "vladvoskr", img: VLAD_IMG },
+                            { name: "Alexander Soroka", role: "Managing Partner, Network VC (invested into 100+ startups)", url: "https://www.linkedin.com/in/alexandersoroka/", li: "alexandersoroka", img: SOROKA_IMG },
+                            { name: "Satish Polisetti", role: "Serial Entrepreneur (exited to Walmart), E-commerce expert, Angel Investor", url: "https://www.linkedin.com/in/polisettisatish/", li: "polisettisatish" },
+                        ].map((m, i) => {
+                            const photoUrl = m.img || `https://unavatar.io/linkedin/${m.li}?fallback=false`;
+                            return (
+                                React.createElement('div', { key: i, className: `anim-up anim-up-d${Math.min(i+1, 4)}`}
+                                    , React.createElement(Card, { style: { padding: "20px 24px", display: "flex", gap: 14, alignItems: "center" }}
+                                        , React.createElement(MentorPhoto, { src: photoUrl, name: m.name} )
+                                        , React.createElement('div', { style: { flex: 1 }}
+                                            , React.createElement('div', { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}
+                                                , React.createElement('a', { href: m.url, target: "_blank", rel: "noopener noreferrer" , style: {
+                                                            fontSize: 15, fontWeight: 700, color: COLORS.accent,
+                                                            textDecoration: "underline",
+                                                            textDecorationColor: COLORS.accent + "50",
+                                                            textUnderlineOffset: 3,
+                                                        },
+                                                        onMouseEnter: e => e.target.style.textDecorationColor = COLORS.accent,
+                                                        onMouseLeave: e => e.target.style.textDecorationColor = COLORS.accent + "50"}
+                                                    , m.name)
+                                                , React.createElement('a', { href: m.url, target: "_blank", rel: "noopener noreferrer" }
+                                                    , React.createElement('svg', { width: "16", height: "16", viewBox: "0 0 24 24"   , fill: COLORS.accent,
+                                                            style: { flexShrink: 0, cursor: "pointer", display: "block" }}
+                                                        , React.createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"                         })
+                                                    )
+                                                )
+                                            )
+                                            , React.createElement('p', { style: { fontSize: 12, color: COLORS.gray, lineHeight: 1.5 }}, m.role)
+                                        )
+                                    )
+                                )
+                            );
+                        })
                     )
-                  )
-                  , React.createElement('div', { style: { padding: "16px 20px" }}
-                    , React.createElement('div', { style: { fontSize: 14, fontWeight: 600, color: COLORS.white }}, v.title)
-                    , React.createElement('div', { style: { fontSize: 12, color: COLORS.gray, marginTop: 4 }}, "YouTube • Raisable"  )
-                  )
+                    , React.createElement('div', { className: "anim-up", style: { fontSize: 14, color: COLORS.gray, fontStyle: "italic", marginBottom: 60 }}, "And many others…"
+
+                    )
+
+
+                    /* YouTube */
+                    , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
+                        , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}
+                            , React.createElement('div', {__self: this}
+
+                                , React.createElement('h2', { style: {
+                                        fontFamily: "'Playfair Display', serif",
+                                        fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, lineHeight: 1.15,
+                                    }}, "Watch us on Youtube"   )
+                            )
+                            , React.createElement('a', { href: "https://www.youtube.com/@RaisableFounders?sub_confirmation=1", target: "_blank", rel: "noopener noreferrer" , style: {
+                                    padding: "12px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600,
+                                    background: "#ff0000", color: "white", textDecoration: "none",
+                                    display: "inline-flex", alignItems: "center", gap: 8,
+                                }}, "▶ Subscribe" )
+                        )
+                    )
+                    , React.createElement('div', { style: {
+                                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                                gap: 20, marginBottom: 80,
+                            }}
+                        , [
+                            { id: "zDQlxNnxDyQ", title: "Raisable Founder Session" },
+                            { id: "I1xgPWbXFXQ", title: "Silicon Valley Insights" },
+                            { id: "3xIhQyR7Xu8", title: "Startup Masterclass" },
+                        ].map((v, i) => (
+                            React.createElement('a', { key: i, href: `https://www.youtube.com/watch?v=${v.id}`, target: "_blank", rel: "noopener noreferrer" ,
+                                    className: `anim-up anim-up-d${i+1}`,
+                                    style: { textDecoration: "none", color: "inherit" }}
+                                , React.createElement(Card, { hover: true, style: { padding: 0, overflow: "hidden" }}
+                                    , React.createElement('div', { style: { position: "relative" }}
+                                        , React.createElement('img', { src: `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`, alt: v.title,
+                                            style: { width: "100%", height: 180, objectFit: "cover", display: "block" }} )
+                                        , React.createElement('div', { style: {
+                                                    position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                                                    background: "rgba(0,0,0,0.3)",
+                                                }}
+                                            , React.createElement('div', { style: {
+                                                        width: 56, height: 56, borderRadius: "50%", background: "rgba(255,0,0,0.9)",
+                                                        display: "flex", alignItems: "center", justifyContent: "center",
+                                                    }}
+                                                , React.createElement('span', { style: { fontSize: 22, color: "white", marginLeft: 3 }}, "▶")
+                                            )
+                                        )
+                                    )
+                                    , React.createElement('div', { style: { padding: "16px 20px" }}
+                                        , React.createElement('div', { style: { fontSize: 14, fontWeight: 600, color: COLORS.white }}, v.title)
+                                        , React.createElement('div', { style: { fontSize: 12, color: COLORS.gray, marginTop: 4 }}, "YouTube • Raisable"  )
+                                    )
+                                )
+                            )
+                        ))
+                    )
+
+                    /* Luma Events */
+                    , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
+                        , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}
+                            , React.createElement('div', {__self: this}
+
+                                , React.createElement('h2', { style: {
+                                        fontFamily: "'Playfair Display', serif",
+                                        fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, lineHeight: 1.15,
+                                    }}, "Join Our Events"  )
+                            )
+                            , React.createElement('a', { href: "https://luma.com/calendar/manage/cal-enEj9FOgzmSrJAR?period=past", target: "_blank", rel: "noopener noreferrer" , style: {
+                                    padding: "12px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600,
+                                    background: `linear-gradient(135deg, ${COLORS.gold}, #e8c06a)`,
+                                    color: COLORS.bg, textDecoration: "none",
+                                    display: "inline-flex", alignItems: "center", gap: 8,
+                                }}, "🗓 Subscribe" )
+                        )
+                    )
+                    , React.createElement('div', { style: {
+                                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                                gap: 20, marginBottom: 60,
+                            }}
+                        , [
+                            { url: "https://luma.com/wz3sqnek", title: "Raisable Session with Vladimir Karyshev", img: LUMA_1, pos: "center center" },
+                            { url: "https://luma.com/4dfdk2yj", title: "GTM & Fundraising Strategy for Tech Founders", img: LUMA_2, pos: "center center" },
+                            { url: "https://luma.com/sa90yvhs?tk=4jlRuC", title: "US GTM Strategy for Global AI Founders", img: LUMA_3, pos: "center center" },
+                        ].map((ev, i) => (
+                            React.createElement('a', { key: i, href: ev.url, target: "_blank", rel: "noopener noreferrer" ,
+                                    className: `anim-up anim-up-d${i+1}`,
+                                    style: { textDecoration: "none", color: "inherit" }}
+                                , React.createElement(Card, { hover: true, style: { padding: 0, overflow: "hidden" }}
+                                    , React.createElement('div', { style: { width: "100%", height: 320, background: "#0a0e17", display: "flex", alignItems: "center", justifyContent: "center" }}
+                                        , React.createElement('img', { src: ev.img, alt: ev.title,
+                                            style: { width: "100%", height: "100%", objectFit: "contain", display: "block" }} )
+                                    )
+                                    , React.createElement('div', { style: { padding: "16px 20px" }}
+                                        , React.createElement('div', { style: { fontSize: 14, fontWeight: 600, color: COLORS.white }}, ev.title)
+                                        , React.createElement('div', { style: { fontSize: 12, color: COLORS.gold, marginTop: 6, display: "flex", alignItems: "center", gap: 6 }}, "View on Luma "
+                                            , React.createElement('span', {__self: this}, "→")
+                                        )
+                                    )
+                                )
+                            )
+                        ))
+                    )
+
+                    /* Contact Us */
+                    , React.createElement('div', { className: "anim-up", style: { marginTop: 80 }}
+                        , React.createElement(SectionHead, { title: "Contact Us" } )
+                        , React.createElement(ContactForm, {__self: this} )
+                    )
+
                 )
-              )
-            ))
-          )
-
-          /* Luma Events */
-          , React.createElement('div', { className: "anim-up", style: { marginBottom: 48 }}
-            , React.createElement('div', { style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}
-              , React.createElement('div', {__self: this}
-
-                , React.createElement('h2', { style: {
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, lineHeight: 1.15,
-                }}, "Join Our Events"  )
-              )
-              , React.createElement('a', { href: "https://luma.com/calendar/manage/cal-enEj9FOgzmSrJAR?period=past", target: "_blank", rel: "noopener noreferrer" , style: {
-                padding: "12px 28px", borderRadius: 10, fontSize: 14, fontWeight: 600,
-                background: `linear-gradient(135deg, ${COLORS.gold}, #e8c06a)`,
-                color: COLORS.bg, textDecoration: "none",
-                display: "inline-flex", alignItems: "center", gap: 8,
-              }}, "🗓 Subscribe" )
             )
-          )
-          , React.createElement('div', { style: {
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 20, marginBottom: 60,
-          }}
-            , [
-              { url: "https://luma.com/wz3sqnek", title: "Raisable Session with Vladimir Karyshev", img: LUMA_1, pos: "center center" },
-              { url: "https://luma.com/4dfdk2yj", title: "GTM & Fundraising Strategy for Tech Founders", img: LUMA_2, pos: "center center" },
-              { url: "https://luma.com/sa90yvhs?tk=4jlRuC", title: "US GTM Strategy for Global AI Founders", img: LUMA_3, pos: "center center" },
-            ].map((ev, i) => (
-              React.createElement('a', { key: i, href: ev.url, target: "_blank", rel: "noopener noreferrer" ,
-                className: `anim-up anim-up-d${i+1}`,
-                style: { textDecoration: "none", color: "inherit" }}
-                , React.createElement(Card, { hover: true, style: { padding: 0, overflow: "hidden" }}
-                  , React.createElement('div', { style: { width: "100%", height: 320, background: "#0a0e17", display: "flex", alignItems: "center", justifyContent: "center" }}
-                    , React.createElement('img', { src: ev.img, alt: ev.title,
-                      style: { width: "100%", height: "100%", objectFit: "contain", display: "block" }} )
-                  )
-                  , React.createElement('div', { style: { padding: "16px 20px" }}
-                    , React.createElement('div', { style: { fontSize: 14, fontWeight: 600, color: COLORS.white }}, ev.title)
-                    , React.createElement('div', { style: { fontSize: 12, color: COLORS.gold, marginTop: 6, display: "flex", alignItems: "center", gap: 6 }}, "View on Luma "
-                         , React.createElement('span', {__self: this}, "→")
-                    )
-                  )
-                )
-              )
-            ))
-          )
-
-          /* Contact Us */
-          , React.createElement('div', { className: "anim-up", style: { marginTop: 80 }}
-            , React.createElement(SectionHead, { title: "Contact Us" } )
-            , React.createElement(ContactForm, {__self: this} )
-          )
-
         )
-      )
-    )
-  );
+    );
 }
 
 // ─── FOOTER ───
 function Footer({ setPage }) {
-  return (
-    React.createElement('footer', { style: {
-      padding: "60px clamp(20px, 5vw, 80px) 30px",
-      borderTop: `1px solid ${COLORS.borderLight}`,
-    }}
-      , React.createElement('div', { style: {
-        maxWidth: 1280, margin: "0 auto",
-        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 40,
-        marginBottom: 40,
-      }}
-        , React.createElement('div', {__self: this}
-          , React.createElement('div', { style: { marginBottom: 16 }}
-            , React.createElement('img', { src: LOGO_FULL, alt: "Raisable Founders Hub"  , style: {
-              height: 40, objectFit: "contain",
-            }} )
-          )
-          , React.createElement('p', { style: { fontSize: 13, color: COLORS.gray, lineHeight: 1.6 }}, "Your Gateway to Silicon Valley's Innovation, Capital and People."
+    return (
+        React.createElement('footer', { style: {
+                    padding: "60px clamp(20px, 5vw, 80px) 30px",
+                    borderTop: `1px solid ${COLORS.borderLight}`,
+                }}
+            , React.createElement('div', { style: {
+                        maxWidth: 1280, margin: "0 auto",
+                        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 40,
+                        marginBottom: 40,
+                    }}
+                , React.createElement('div', {__self: this}
+                    , React.createElement('div', { style: { marginBottom: 16 }}
+                        , React.createElement('img', { src: LOGO_FULL, alt: "Raisable Founders Hub"  , style: {
+                                height: 40, objectFit: "contain",
+                            }} )
+                    )
+                    , React.createElement('p', { style: { fontSize: 13, color: COLORS.gray, lineHeight: 1.6 }}, "Your Gateway to Silicon Valley's Innovation, Capital and People."
 
-          )
+                    )
+                )
+
+                , React.createElement('div', {__self: this}
+                    , React.createElement('div', { style: { fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: COLORS.grayLight, marginBottom: 16 }}, "Navigate")
+                    , ["about"].map(p => (
+                        React.createElement('div', { key: p, onClick: () => { setPage(p); window.scrollTo(0,0); },
+                                style: { fontSize: 14, color: COLORS.gray, marginBottom: 10, cursor: "pointer", transition: "color 0.2s" },
+                                onMouseEnter: e => e.target.style.color = COLORS.accent,
+                                onMouseLeave: e => e.target.style.color = COLORS.gray}
+                            , {"about": "About Us"}[p])
+                    ))
+                )
+
+                , React.createElement('div', {__self: this}
+                    , React.createElement('div', { style: { fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: COLORS.grayLight, marginBottom: 16 }}, "Connect")
+                    , React.createElement('a', { href: "mailto:og@raisable.vc", style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
+                            onMouseEnter: e => e.target.style.color = COLORS.accent,
+                            onMouseLeave: e => e.target.style.color = COLORS.gray}
+                        , "og@raisable.vc")
+                    , React.createElement('a', { href: "https://www.youtube.com/@RaisableFounders",
+                            style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
+                            onMouseEnter: e => e.target.style.color = COLORS.accent,
+                            onMouseLeave: e => e.target.style.color = COLORS.gray}
+                        , "YouTube")
+                    , React.createElement('a', { href: "https://luma.com/calendar/manage/cal-enEj9FOgzmSrJAR?period=past",
+                            style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
+                            onMouseEnter: e => e.target.style.color = COLORS.accent,
+                            onMouseLeave: e => e.target.style.color = COLORS.gray}
+                        , "Events on Luma"  )
+                )
+            )
+
+            , React.createElement('div', { style: {
+                        borderTop: `1px solid ${COLORS.borderLight}`, paddingTop: 20,
+                        display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10,
+                    }}
+                , React.createElement('span', { style: { fontSize: 12, color: COLORS.gray }}, "© 2026 Raisable. Silicon Valley."    )
+                , React.createElement('span', { style: { fontSize: 12, color: COLORS.gray }}, "Connecting founders, investors and operators"    )
+            )
         )
-
-        , React.createElement('div', {__self: this}
-          , React.createElement('div', { style: { fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: COLORS.grayLight, marginBottom: 16 }}, "Navigate")
-          , ["about"].map(p => (
-            React.createElement('div', { key: p, onClick: () => { setPage(p); window.scrollTo(0,0); },
-              style: { fontSize: 14, color: COLORS.gray, marginBottom: 10, cursor: "pointer", transition: "color 0.2s" },
-              onMouseEnter: e => e.target.style.color = COLORS.accent,
-              onMouseLeave: e => e.target.style.color = COLORS.gray}
-, {"about": "About Us"}[p])
-          ))
-        )
-
-        , React.createElement('div', {__self: this}
-          , React.createElement('div', { style: { fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: COLORS.grayLight, marginBottom: 16 }}, "Connect")
-          , React.createElement('a', { href: "mailto:og@raisable.vc", style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
-            onMouseEnter: e => e.target.style.color = COLORS.accent,
-            onMouseLeave: e => e.target.style.color = COLORS.gray}
-, "og@raisable.vc")
-          , React.createElement('a', { href: "https://www.youtube.com/@RaisableFounders",
-            style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
-            onMouseEnter: e => e.target.style.color = COLORS.accent,
-            onMouseLeave: e => e.target.style.color = COLORS.gray}
-, "YouTube")
-          , React.createElement('a', { href: "https://luma.com/calendar/manage/cal-enEj9FOgzmSrJAR?period=past",
-            style: { display: "block", fontSize: 14, color: COLORS.gray, marginBottom: 10, textDecoration: "none", transition: "color 0.2s" },
-            onMouseEnter: e => e.target.style.color = COLORS.accent,
-            onMouseLeave: e => e.target.style.color = COLORS.gray}
-, "Events on Luma"  )
-        )
-      )
-
-      , React.createElement('div', { style: {
-        borderTop: `1px solid ${COLORS.borderLight}`, paddingTop: 20,
-        display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10,
-      }}
-        , React.createElement('span', { style: { fontSize: 12, color: COLORS.gray }}, "© 2026 Raisable. Silicon Valley."    )
-        , React.createElement('span', { style: { fontSize: 12, color: COLORS.gray }}, "Connecting founders, investors and operators"    )
-      )
-    )
-  );
+    );
 }
 
 // ─── MAIN APP ───
 function App() {
-  const [page, setPage] = useState("home");
+    const [page, setPage] = useState("home");
 
-  const renderPage = () => {
-    switch (page) {
-      case "about": return React.createElement(AboutPage, {__self: this} );
-      default: return React.createElement(HomePage, { setPage: setPage} );
-    }
-  };
+    const renderPage = () => {
+        switch (page) {
+            case "about": return React.createElement(AboutPage, {__self: this} );
+            default: return React.createElement(HomePage, { setPage: setPage} );
+        }
+    };
 
-  return (
-    React.createElement('div', { style: {
-      minHeight: "100vh", display: "flex", flexDirection: "column",
-      position: "relative",
-    }}
-      /* Global background */
-      , React.createElement('div', { style: {
-        position: "fixed", inset: 0, zIndex: -2,
-        backgroundImage: `url(${BG_SRC})`,
-        backgroundSize: "cover", backgroundPosition: "center top",
-        backgroundAttachment: "fixed",
-      }} )
-      , React.createElement('div', { style: {
-        position: "fixed", inset: 0, zIndex: -1,
-        background: "linear-gradient(180deg, rgba(10,14,23,0.55) 0%, rgba(10,14,23,0.88) 35%, rgba(10,14,23,0.96) 60%, rgba(10,14,23,1) 100%)",
-      }} )
-      , React.createElement(Nav, { page: page, setPage: setPage} )
-      , React.createElement('main', { style: { flex: 1 }, key: page}
-        , renderPage()
-      )
-      , React.createElement(Footer, { setPage: setPage} )
-    )
-  );
+    return (
+        React.createElement('div', { style: {
+                    minHeight: "100vh", display: "flex", flexDirection: "column",
+                    position: "relative",
+                }}
+            /* Global background */
+            , React.createElement('div', { style: {
+                    position: "fixed", inset: 0, zIndex: -2,
+                    backgroundImage: `url(${BG_SRC})`,
+                    backgroundSize: "cover", backgroundPosition: "center top",
+                    backgroundAttachment: "fixed",
+                }} )
+            , React.createElement('div', { style: {
+                    position: "fixed", inset: 0, zIndex: -1,
+                    background: "linear-gradient(180deg, rgba(10,14,23,0.55) 0%, rgba(10,14,23,0.88) 35%, rgba(10,14,23,0.96) 60%, rgba(10,14,23,1) 100%)",
+                }} )
+            , React.createElement(Nav, { page: page, setPage: setPage} )
+            , React.createElement('main', { style: { flex: 1 }, key: page}
+                , renderPage()
+            )
+            , React.createElement(Footer, { setPage: setPage} )
+        )
+    );
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
